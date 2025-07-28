@@ -30,11 +30,34 @@ class FleetRoutingService {
     }
     this._parent = `projects/${process.env.PROJECT_ID}`;
 
-    this._client = new v1.RouteOptimizationClient({
+    const clientOptions: {
+      [key: string]: any;
+      credentials?: {
+        client_email: string;
+        private_key: string;
+        project_id: string;
+      };
+    } = {
       "grpc.keepalive_time_ms": 120000, // 2m
       "grpc.keepalive_timeout_ms": 10000, // 10s
       "grpc.http2.max_pings_without_data": 0,
-    });
+    };
+
+    // Use service account credentials from environment variables if available
+    if (
+      process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL &&
+      process.env.GOOGLE_SERVICE_ACCOUNT_PRIVATE_KEY &&
+      process.env.GOOGLE_SERVICE_ACCOUNT_PROJECT_ID
+    ) {
+      log.logger.debug("Using service account credentials from environment variables for RouteOptimizationClient");
+      clientOptions.credentials = {
+        client_email: process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL,
+        private_key: process.env.GOOGLE_SERVICE_ACCOUNT_PRIVATE_KEY.replace(/\\n/g, '\n'),
+        project_id: process.env.GOOGLE_SERVICE_ACCOUNT_PROJECT_ID,
+      };
+    }
+
+    this._client = new v1.RouteOptimizationClient(clientOptions);
   }
 
   public async optimizeTours(
