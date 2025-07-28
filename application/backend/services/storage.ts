@@ -59,23 +59,11 @@ class StorageSerivce {
       projectId,
     };
 
-    // attempt to load service account credentials from environment variables
+    // attempt to load service account credentials from disk
     if (
-      process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL &&
-      process.env.GOOGLE_SERVICE_ACCOUNT_PRIVATE_KEY &&
-      process.env.GOOGLE_SERVICE_ACCOUNT_PROJECT_ID
-    ) {
-      log.logger.debug("Using service account credentials from environment variables");
-      storageOptions.credentials = {
-        client_email: process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL,
-        private_key: process.env.GOOGLE_SERVICE_ACCOUNT_PRIVATE_KEY.replace(/\\n/g, '\n'),
-        project_id: process.env.GOOGLE_SERVICE_ACCOUNT_PROJECT_ID,
-      };
-    } else if (
       process.env.STORAGE_PROJECT_ID &&
       process.env.STORAGE_PROJECT_ID !== process.env.PROJECT_ID
     ) {
-      // fallback to keyFilename approach if environment variables are not available
       const keyFilename =
         process.env.STORAGE_CREDENTIALS || path.join(__dirname, "keys.json");
       log.logger.debug(`Storage keyFilename:  ${keyFilename}`);
