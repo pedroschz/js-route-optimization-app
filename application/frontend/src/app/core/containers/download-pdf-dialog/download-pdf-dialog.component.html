@@ -7,30 +7,30 @@
       color="primary"
       class="all-routes"
       (click)="beginGeneration(false)">
-      Generate for all routes
+      Generar para todas las rutas
     </button>
     <button type="button" mat-flat-button color="primary" (click)="beginGeneration(true)">
-      Generate for selected and filtered routes
+      Generar para rutas seleccionadas y filtradas
     </button>
   </div>
   <div *ngIf="state !== GenerationState.Waiting">
     <div class="progress" *ngIf="state === GenerationState.Complete">
       <p>
-        If the download did not automatically begin, you can click
-        <a href="javascript:void(0)" (click)="downloadReport()">here</a> to download the report.
+        Si la descarga no comenzó automáticamente, puedes hacer clic
+        <a href="javascript:void(0)" (click)="downloadReport()">aquí</a> para descargar el reporte.
       </p>
-      <p>It is now safe to close this window.</p>
+      <p>Ahora es seguro cerrar esta ventana.</p>
     </div>
     <div class="progress" *ngIf="state === GenerationState.BuildingDocument">
-      <p>Building report...</p>
+      <p>Construyendo reporte...</p>
       <mat-progress-bar mode="indeterminate"></mat-progress-bar>
     </div>
     <div class="progress" *ngIf="state === GenerationState.RenderingMaps">
-      <p>Generating maps...</p>
+      <p>Generando mapas...</p>
       <mat-progress-bar mode="indeterminate"></mat-progress-bar>
     </div>
     <div class="progress" *ngIf="state === GenerationState.Error">
-      <mat-error class="mat-body-strong"> Error generating report </mat-error>
+      <mat-error class="mat-body-strong"> Error generando reporte </mat-error>
       <p>
         {{ errorMessage }}
       </p>
@@ -43,6 +43,6 @@
     mat-flat-button
     [color]="state === GenerationState.Complete ? 'primary' : 'warn'"
     (click)="cancel()">
-    {{ state === GenerationState.Complete ? 'Close' : 'Cancel' }}
+    {{ state === GenerationState.Complete ? 'Cerrar' : 'Cancelar' }}
   </button>
 </div>

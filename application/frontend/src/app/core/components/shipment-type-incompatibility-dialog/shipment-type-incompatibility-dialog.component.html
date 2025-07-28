@@ -86,19 +86,19 @@
               shipmentTypeIncompat.getError('required', 'types') ||
               shipmentTypeIncompat.getError('minlength', 'types')
             ">
-            At least 2 types required
+            Se requieren al menos 2 tipos
           </mat-error>
           <div
             class="unused-shipment-type-warning"
             *ngIf="unusedShipmentIncompatTypes[shipmentTypeIncompatsIndex]">
-            Shipment type(s) not used on any shipments:
+            Tipo(s) de envío no utilizados en ningún envío:
             {{ unusedShipmentIncompatTypes[shipmentTypeIncompatsIndex] }}
           </div>
         </div>
 
         <!-- mode -->
         <div class="settings-item pad-right">
-          <div class="mat-body-strong">Incompatibility mode*</div>
+          <div class="mat-body-strong">Modo de incompatibilidad*</div>
           <mat-form-field appearance="outline" class="pb-0">
             <mat-select formControlName="incompatibilityMode">
               <mat-option
@@ -109,7 +109,7 @@
             </mat-select>
           </mat-form-field>
           <mat-error *ngIf="shipmentTypeIncompat.getError('required', 'incompatibilityMode')">
-            Required
+            Requerido
           </mat-error>
         </div>
 
@@ -119,7 +119,7 @@
           class="clear-place"
           (click)="removeShipmentTypeIncompat(shipmentTypeIncompatsIndex)"
           mat-icon-button
-          title="Remove Shipment Type Incompatibility">
+          title="Eliminar incompatibilidad de tipo de envío">
           <mat-icon class="icon--smaller m-0" svgIcon="delete"></mat-icon>
         </button>
       </div>
@@ -130,7 +130,7 @@
       color="primary"
       class="light-stroked-button"
       (click)="addShipmentTypeIncompat()">
-      Add shipment type incompatibility
+      Agregar incompatibilidad de tipo de envío
     </button>
   </section>
 </form>

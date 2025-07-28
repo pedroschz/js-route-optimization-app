@@ -1,10 +1,10 @@
-<h2 mat-dialog-title>Confirm Bulk Overwrite</h2>
+<h2 mat-dialog-title>Confirmar Sobrescritura Masiva</h2>
 <div mat-dialog-content>
-  This will overwrite the below fields for ALL selected
-  {{ data.isShipment ? 'shipments' : 'vehicles' }}. Do you want to continue?
+  Esto sobrescribirá los siguientes campos para TODOS los
+  {{ data.isShipment ? 'envíos' : 'vehículos' }} seleccionados. ¿Quieres continuar?
 </div>
 <li *ngFor="let fieldName of data.fields">{{ fieldName }}</li>
 <div mat-dialog-actions>
-  <button mat-flat-button mat-dialog-close cdkFocusInitial>Cancel</button>
-  <button mat-flat-button color="warn" [mat-dialog-close]="true">Accept</button>
+  <button mat-flat-button mat-dialog-close cdkFocusInitial>Cancelar</button>
+  <button mat-flat-button color="warn" [mat-dialog-close]="true">Aceptar</button>
 </div>

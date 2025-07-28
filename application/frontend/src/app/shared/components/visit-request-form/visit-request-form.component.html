@@ -1,9 +1,9 @@
 <header>
-  <h3>{{ isPickup ? 'Pickup' : 'Delivery' }} request alternative #{{ id }}</h3>
+  <h3>{{ isPickup ? 'Alternativa de recolección' : 'Alternativa de entrega' }} #{{ id }}</h3>
   <button
     mat-icon-button
     type="button"
-    title="Remove {{ isPickup ? 'pickup' : 'delivery' }} request alternative #{{ id }}"
+    title="Eliminar {{ isPickup ? 'alternativa de recolección' : 'alternativa de entrega' }} #{{ id }}"
     (click)="remove.emit()"
     *ngIf="form.enabled">
     <mat-icon svgIcon="delete"></mat-icon>
@@ -13,7 +13,7 @@
   <section class="edit-menu-content flex-column">
     <mat-form-field class="edit-label pad-right">
       <!-- visit label -->
-      <mat-chip-list #labelChipList aria-label="Visit request labels" [disabled]="disabled">
+      <mat-chip-list #labelChipList aria-label="Etiquetas de la solicitud de visita" [disabled]="disabled">
         <mat-chip
           class="visit-request-chip"
           *ngFor="let label of labels; let i = index"
@@ -23,7 +23,7 @@
           <mat-icon matChipRemove *ngIf="!disabled">cancel</mat-icon>
         </mat-chip>
         <input
-          placeholder="Label"
+          placeholder="Etiqueta"
           [formControl]="labelCtrl"
           [matChipInputFor]="labelChipList"
           (keydown)="onLabelKeyDown($event)"
@@ -37,7 +37,7 @@
     <div class="w-100 d-flex flex-row flex-wrap align-items-baseline">
       <div class="edit-place pad-right place-autocomplete-wide">
         <mat-form-field>
-          <mat-label>Arrival location</mat-label>
+          <mat-label>Ubicación de llegada</mat-label>
           <app-place-autocomplete
             [bounds]="bounds"
             formControlName="arrivalLocation"
@@ -49,11 +49,11 @@
               (arrivalLocation.touched || arrivalLocation.dirty)
             "
             [attr.title]="requiredMessage.innerText">
-            <span #requiredMessage>Arrival location is required</span>
+            <span #requiredMessage>La ubicación de llegada es obligatoria</span>
           </mat-error>
           <mat-hint>
             <span *ngIf="arrivalLocation.value">
-              <span class="mr-2">Coordinates:</span>{{ arrivalLocation.value | formatLatLng }}
+              <span class="mr-2">Coordenadas:</span>{{ arrivalLocation.value | formatLatLng }}
             </span>
           </mat-hint>
         </mat-form-field>
@@ -63,7 +63,7 @@
             type="button"
             class="clear-place"
             mat-icon-button
-            title="Clear arrival location"
+            title="Limpiar ubicación de llegada"
             (click)="clearControl(arrivalLocation)">
             <mat-icon class="icon--smaller m-0" svgIcon="delete"></mat-icon>
           </button>
@@ -73,7 +73,7 @@
               type="button"
               class="clear-place"
               mat-icon-button
-              title="Set arrival location"
+              title="Establecer ubicación de llegada"
               (click)="setArrivalLocation()">
               <mat-icon class="icon--smaller m-0" svgIcon="add"></mat-icon>
             </button>
@@ -82,7 +82,7 @@
                 type="button"
                 class="clear-place"
                 mat-icon-button
-                title="Cancel set arrival location"
+                title="Cancelar establecer ubicación de llegada"
                 (click)="cancelSetArrivalLocation()">
                 <mat-icon class="icon--smaller m-0" svgIcon="clear"></mat-icon>
               </button>
@@ -91,22 +91,22 @@
         </ng-container>
       </div>
       <mat-form-field class="item-sm padded-form-field pad-right waypoint-heading">
-        <mat-label>Heading</mat-label>
+        <mat-label>Orientación</mat-label>
         <input matInput type="number" min="0" max="360" [formControl]="arrivalHeading" />
         <mat-error
           *ngIf="arrivalHeading.errors && (arrivalHeading.touched || arrivalHeading.dirty)"
           [attr.title]="errorMessage.innerText">
-          <span #errorMessage>Invalid Value</span>
+          <span #errorMessage>Valor inválido</span>
         </mat-error>
       </mat-form-field>
-      <mat-checkbox [formControl]="arrivalSideOfRoad" color="primary"> Side of road </mat-checkbox>
+      <mat-checkbox [formControl]="arrivalSideOfRoad" color="primary"> Lado de la carretera </mat-checkbox>
     </div>
 
     <!-- departure location -->
     <div class="w-100 d-flex flex-row flex-wrap align-items-baseline">
       <div class="edit-place pad-right place-autocomplete-wide">
         <mat-form-field>
-          <mat-label>Departure location (if different than arrival)</mat-label>
+          <mat-label>Ubicación de salida (si es diferente a la de llegada)</mat-label>
           <app-place-autocomplete
             [bounds]="bounds"
             formControlName="departureLocation"
@@ -114,7 +114,7 @@
           </app-place-autocomplete>
           <mat-hint>
             <span *ngIf="departureLocation.value">
-              <span class="mr-2">Coordinates:</span>{{ departureLocation.value | formatLatLng }}
+              <span class="mr-2">Coordenadas:</span>{{ departureLocation.value | formatLatLng }}
             </span>
           </mat-hint>
         </mat-form-field>
@@ -124,7 +124,7 @@
             type="button"
             class="clear-place"
             mat-icon-button
-            title="Clear arrival location"
+            title="Limpiar ubicación de salida"
             (click)="clearControl(departureLocation)">
             <mat-icon class="icon--smaller m-0" svgIcon="delete"></mat-icon>
           </button>
@@ -134,7 +134,7 @@
               type="button"
               class="clear-place"
               mat-icon-button
-              title="Set arrival location"
+              title="Establecer ubicación de salida"
               (click)="setDepartureLocation()">
               <mat-icon class="icon--smaller m-0" svgIcon="add"></mat-icon>
             </button>
@@ -143,7 +143,7 @@
                 type="button"
                 class="clear-place"
                 mat-icon-button
-                title="Cancel set arrival location"
+                title="Cancelar establecer ubicación de salida"
                 (click)="cancelSetDepartureLocation()">
                 <mat-icon class="icon--smaller m-0" svgIcon="clear"></mat-icon>
               </button>
@@ -152,16 +152,16 @@
         </ng-container>
       </div>
       <mat-form-field class="item-sm padded-form-field pad-right waypoint-heading">
-        <mat-label>Heading</mat-label>
+        <mat-label>Orientación</mat-label>
         <input matInput type="number" min="0" max="360" [formControl]="departureHeading" />
         <mat-error
           *ngIf="departureHeading.errors && (departureHeading.touched || departureHeading.dirty)"
           [attr.title]="errorMessage.innerText">
-          <span #errorMessage>Invalid Value</span>
+          <span #errorMessage>Valor inválido</span>
         </mat-error>
       </mat-form-field>
       <mat-checkbox [formControl]="departureSideOfRoad" color="primary">
-        Side of road
+        Lado de la carretera
       </mat-checkbox>
     </div>
   </section>
@@ -170,13 +170,13 @@
     <!-- duration -->
     <div *ngIf="durationMinutes as control" class="item-sm pad-right">
       <mat-form-field [appearance]="appearance">
-        <mat-label>Duration</mat-label>
+        <mat-label>Duración</mat-label>
         <input matInput type="number" min="0" pattern="\d*" formControlName="durationMinutes" />
-        <span title="minutes" matSuffix>min</span>
+        <span title="minutos" matSuffix>min</span>
         <mat-error
           *ngIf="control.errors?.pattern && (control.touched || control.dirty)"
           [attr.title]="patternMessage.innerText">
-          <span #patternMessage>Non-negative integer required</span>
+          <span #patternMessage>Se requiere un entero no negativo</span>
         </mat-error>
       </mat-form-field>
     </div>
@@ -189,16 +189,16 @@
           max="59"
           pattern="\d*"
           formControlName="durationSeconds" />
-        <span title="seconds" matSuffix>sec</span>
+        <span title="segundos" matSuffix>seg</span>
         <mat-error
           *ngIf="control.errors?.pattern && (control.touched || control.dirty)"
           [attr.title]="patternMessage.innerText">
-          <span #patternMessage>Non-negative integer required</span>
+          <span #patternMessage>Se requiere un entero no negativo</span>
         </mat-error>
         <mat-error
           *ngIf="control.errors?.max && (control.touched || control.dirty)"
           [attr.title]="patternMessage.innerText">
-          <span #patternMessage>Cannot exceed 59 seconds</span>
+          <span #patternMessage>No puede exceder 59 segundos</span>
         </mat-error>
       </mat-form-field>
     </div>
@@ -206,7 +206,7 @@
     <!-- cost -->
     <div *ngIf="cost as control" class="item-sm pad-right">
       <mat-form-field [appearance]="appearance">
-        <mat-label>Cost</mat-label>
+        <mat-label>Costo</mat-label>
         <input
           matInput
           type="number"
@@ -217,7 +217,7 @@
         <mat-error
           *ngIf="control.errors?.pattern && (control.touched || control.dirty)"
           [attr.title]="patternMessage.innerText">
-          <span #patternMessage>Non-negative number required</span>
+          <span #patternMessage>Se requiere un número no negativo</span>
         </mat-error>
       </mat-form-field>
     </div>
@@ -225,8 +225,8 @@
     <!-- visit tags -->
     <div class="visit-tags pad-right">
       <mat-form-field class="visit-tag-list" [appearance]="appearance">
-        <mat-label>Visit Tags</mat-label>
-        <mat-chip-list #visitTagChipList aria-label="Visit tag selection" [disabled]="disabled">
+        <mat-label>Etiquetas de visita</mat-label>
+        <mat-chip-list #visitTagChipList aria-label="Selección de etiquetas de visita" [disabled]="disabled">
           <mat-chip
             *ngFor="let visitTag of visitTags.value"
             [selectable]="false"
@@ -258,8 +258,8 @@
     <!-- visit types -->
     <div class="visit-types pad-right">
       <mat-form-field class="visit-type-list" [appearance]="appearance">
-        <mat-label>Visit Types</mat-label>
-        <mat-chip-list #visitTypeChipList aria-label="Visit type selection" [disabled]="disabled">
+        <mat-label>Tipos de visita</mat-label>
+        <mat-chip-list #visitTypeChipList aria-label="Selección de tipos de visita" [disabled]="disabled">
           <mat-chip
             *ngFor="let visitType of visitTypes.value"
             [selectable]="false"
@@ -295,16 +295,16 @@
   <section class="shipment-demands">
     <header>
       <div>
-        <span class="mat-h4">Demands</span> ({{ loadDemands.length }})
+        <span class="mat-h4">Demandas</span> ({{ loadDemands.length }})
         <mat-error
           class="mb-4"
           *ngIf="loadDemands.errors && (loadDemands.touched || loadDemands.dirty)"
           [attr.title]="errorMessage.innerText">
-          <span #errorMessage>Cannot have duplicate demand types</span>
+          <span #errorMessage>No puede haber tipos de demanda duplicados</span>
         </mat-error>
       </div>
       <button type="button" mat-button color="primary" (click)="addDemand()" [disabled]="disabled">
-        Add demand
+        Agregar demanda
       </button>
     </header>
     <ng-container>
@@ -322,13 +322,13 @@
   <section class="time-windows">
     <header>
       <div>
-        <span class="mat-h4">Time windows</span> ({{ timeWindows.length }})
+        <span class="mat-h4">Ventanas de tiempo</span> ({{ timeWindows.length }})
         <mat-error class="mb-4" *ngIf="timeWindows.errors?.overlap"
-          >Time windows must not overlap</mat-error
+          >Las ventanas de tiempo no deben superponerse</mat-error
         >
       </div>
       <button type="button" mat-button color="primary" (click)="addTimeWindow()" *ngIf="!disabled">
-        Add time window
+        Agregar ventana de tiempo
       </button>
     </header>
     <ng-container *ngIf="timeWindows.at(0) as control">
@@ -342,7 +342,7 @@
     </ng-container>
     <mat-expansion-panel #timeWindowsPanel [disabled]="timeWindows.length < 2">
       <mat-expansion-panel-header>
-        <mat-panel-title> Show more time windows </mat-panel-title>
+        <mat-panel-title> Mostrar más ventanas de tiempo </mat-panel-title>
       </mat-expansion-panel-header>
       <ng-container
         *ngFor="let control of timeWindows.controls | slice: 1; index as i; first as isFirst">

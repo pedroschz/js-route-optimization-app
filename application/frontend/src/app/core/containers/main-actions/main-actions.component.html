@@ -3,11 +3,11 @@
   (click)="onLoad()"
   *ngIf="(hasStorageApi$ | async) && (allowUserStorage$ | async)">
   <mat-icon svgIcon="cloud_upload"></mat-icon>
-  From cloud
+  Desde la nube
 </button>
 <button mat-button (click)="onUpload()">
   <mat-icon svgIcon="input"></mat-icon>
-  From JSON
+  Desde JSON
 </button>
 <cdk-accordion>
   <cdk-accordion-item
@@ -18,7 +18,7 @@
     [attr.aria-expanded]="accordionItem2.expanded"
     aria-controls="'main-actions-accordion-body-2'">
     <button mat-button (click)="accordionItem2.toggle()" class="main-actions-accordion-header">
-      <mat-icon svgIcon="save_alt"></mat-icon> Save
+      <mat-icon svgIcon="save_alt"></mat-icon> Guardar
     </button>
     <div
       role="region"
@@ -32,7 +32,7 @@
         *ngIf="(hasStorageApi$ | async) && (allowUserStorage$ | async)"
         class="main-actions-accordion-button">
         <mat-icon svgIcon="cloud_download"></mat-icon>
-        To cloud
+        A la nube
       </button>
       <button
         mat-button
@@ -40,7 +40,7 @@
         *ngIf="hasDownload$ | async"
         class="main-actions-accordion-button">
         <mat-icon svgIcon="save_alt"></mat-icon>
-        As JSON
+        Como JSON
       </button>
       <button
         mat-button
@@ -48,7 +48,7 @@
         class="main-actions-accordion-button"
         [disabled]="(hasSolution$ | async) === false">
         <mat-icon svgIcon="csv"></mat-icon>
-        Routes as CSV
+        Rutas como CSV
       </button>
       <button
         mat-button
@@ -56,7 +56,7 @@
         class="main-actions-accordion-button"
         [disabled]="(hasSolution$ | async) === false">
         <mat-icon svgIcon="pdf"></mat-icon>
-        Routes as PDF
+        Rutas como PDF
       </button>
     </div>
   </cdk-accordion-item>
@@ -64,5 +64,5 @@
 
 <button mat-button (click)="onHelp()">
   <mat-icon svgIcon="help"></mat-icon>
-  Help
+  Ayuda
 </button>

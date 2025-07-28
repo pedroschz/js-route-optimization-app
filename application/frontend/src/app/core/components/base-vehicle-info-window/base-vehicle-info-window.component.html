@@ -12,7 +12,7 @@
   <span class="strong">{{ route.metrics.travelDistanceMeters / 1000 | number: '1.1-1' }} km</span>
 </div>
 <div *ngIf="shipmentCount != null" class="text__caption">
-  Shipments: <span class="strong">{{ shipmentCount }}</span>
+  Envíos: <span class="strong">{{ shipmentCount }}</span>
 </div>
 <div *ngIf="route?.metrics?.maxLoads" class="d-flex text__caption">
   <div class="mr-1">Max load:</div>

@@ -13,32 +13,32 @@
       <mat-datepicker-toggle matSuffix [for]="datePicker"></mat-datepicker-toggle>
       <mat-datepicker #datePicker></mat-datepicker>
       <mat-error *ngIf="control.errors?.required" [attr.title]="message.innerText">
-        <span #message>{{ dateLabel }} is required</span>
+        <span #message>{{ dateLabel }} es requerido</span>
       </mat-error>
     </mat-form-field>
     <mat-form-field *ngIf="timeCtrl as control" class="time">
       <input matInput type="time" [formControl]="control" />
       <mat-error *ngIf="control.errors?.timeString" [attr.title]="message.innerText">
-        <span #message>Invalid format</span>
+        <span #message>Formato inválido</span>
       </mat-error>
     </mat-form-field>
   </div>
   <ng-container *ngIf="operationCtrl.value === DateFilterOperation.Between">
-    <span>and</span>
+    <span>y</span>
     <div class="datetime">
       <mat-form-field *ngIf="date2Ctrl as control" class="date pad-right">
-        <mat-label>Max date</mat-label>
+        <mat-label>Fecha máxima</mat-label>
         <input matInput [matDatepicker]="date2Picker" [formControl]="control" />
         <mat-datepicker-toggle matSuffix [for]="date2Picker"></mat-datepicker-toggle>
         <mat-datepicker #date2Picker [startAt]="dateCtrl.value"></mat-datepicker>
         <mat-error *ngIf="control.errors?.required" [attr.title]="message.innerText">
-          <span #message>Max Date is required</span>
+          <span #message>La fecha máxima es requerida</span>
         </mat-error>
       </mat-form-field>
       <mat-form-field *ngIf="time2Ctrl as control" class="time">
         <input matInput type="time" [formControl]="control" />
         <mat-error *ngIf="control.errors?.timeString" [attr.title]="message.innerText">
-          <span #message>Invalid format</span>
+          <span #message>Formato inválido</span>
         </mat-error>
       </mat-form-field>
     </div>

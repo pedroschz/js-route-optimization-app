@@ -18,7 +18,7 @@ import { createReducer, on } from '@ngrx/store';
 import { DispatcherActions } from '../actions';
 import { IOptimizeToursResponse, Scenario, Solution } from '../models';
 
-const defaultScenarioName = 'Untitled scenario';
+const defaultScenarioName = 'Optimización sin título';
 
 export const dispatcherFeatureKey = 'dispatcher';
 

@@ -7,10 +7,10 @@
     [(selectedIndex)]="selectedTab"
     (selectedTabChange)="changeTab($event.index)"
     #tabGroup>
-    <mat-tab label="Request" #scenarioTab>
+    <mat-tab label="Solicitud" #scenarioTab>
       <ng-container [ngTemplateOutlet]="resultsTable"></ng-container>
     </mat-tab>
-    <mat-tab label="Response">
+    <mat-tab label="Respuesta">
       <ng-container [ngTemplateOutlet]="resultsTable"></ng-container>
     </mat-tab>
   </mat-tab-group>
@@ -18,12 +18,12 @@
 <mat-divider></mat-divider>
 <mat-dialog-actions align="end">
   <ng-container [ngTemplateOutlet]="searchBar"></ng-container>
-  <button mat-button mat-dialog-close [disabled]="loadingFile">Cancel</button>
+  <button mat-button mat-dialog-close [disabled]="loadingFile">Cancelar</button>
   <ng-container *ngIf="saving; else openButton" [ngTemplateOutlet]="saveButton"></ng-container>
 </mat-dialog-actions>
 
-<ng-template #loadTitle>Open new request or new response</ng-template>
-<ng-template #saveTitle>Save current request or response to Google Cloud Storage</ng-template>
+<ng-template #loadTitle>Abrir nueva solicitud o nueva respuesta</ng-template>
+<ng-template #saveTitle>Guardar solicitud o respuesta actual en Google Cloud Storage</ng-template>
 
 <ng-template #loadingSpinner>
   <mat-spinner diameter="25"></mat-spinner>
@@ -35,7 +35,7 @@
     (click)="accept()"
     color="primary"
     [disabled]="!currentSelection || loading || loadingFile">
-    Open
+    Abrir
   </button>
 </ng-template>
 <ng-template #saveButton>
@@ -44,14 +44,14 @@
     (click)="accept()"
     color="primary"
     [disabled]="!filename || loading || loadingFile">
-    Save
+    Guardar
   </button>
 </ng-template>
 
 <ng-template #saveBar>
   <div class="dialog-element save-field">
     <mat-form-field appearance="outline">
-      <mat-label>Save as</mat-label>
+      <mat-label>Guardar como</mat-label>
       <input matInput type="text" [(ngModel)]="filename" #saveInput />
     </mat-form-field>
   </div>
@@ -60,9 +60,9 @@
 <ng-template #searchBar>
   <div class="dialog-element search-field">
     <mat-form-field appearance="outline">
-      <mat-label>Search</mat-label>
+      <mat-label>Buscar</mat-label>
       <input
-        placeholder="Filename starts with"
+        placeholder="Nombre de archivo comienza con"
         matInput
         type="text"
         [(ngModel)]="searchText"
@@ -89,7 +89,7 @@
       *ngIf="!loading; else loadingSpinner"
       [ngClass]="{ 'table-loading': loading }">
       <ng-container matColumnDef="name">
-        <th mat-header-cell *matHeaderCellDef>Name</th>
+        <th mat-header-cell *matHeaderCellDef>Nombre</th>
         <td
           mat-cell
           *matCellDef="let result"
@@ -99,7 +99,7 @@
         </td>
       </ng-container>
       <ng-container matColumnDef="dateCreated">
-        <th mat-header-cell *matHeaderCellDef>Created At</th>
+        <th mat-header-cell *matHeaderCellDef>Creado el</th>
         <td
           mat-cell
           *matCellDef="let result"
@@ -109,7 +109,7 @@
         </td>
       </ng-container>
       <ng-container matColumnDef="dateModified">
-        <th mat-header-cell *matHeaderCellDef>Last Modified</th>
+        <th mat-header-cell *matHeaderCellDef>Última modificación</th>
         <td
           mat-cell
           *matCellDef="let result"
@@ -128,7 +128,7 @@
             mat-icon-button
             class="delete-button"
             type="button"
-            title="Delete"
+            title="Eliminar"
             (click)="confirmDelete(result)"
             [disabled]="loading || loadingFile">
             <mat-icon svgIcon="delete"></mat-icon>
@@ -145,7 +145,7 @@
 <ng-template #paginator>
   <div class="paginator mat-typography">
     <span class="mat-caption" *ngIf="searchResults.length"
-      >Showing {{ pageMin }}-{{ pageMax }}</span
+      >Mostrando {{ pageMin }}-{{ pageMax }}</span
     >
     <button
       mat-button

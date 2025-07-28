@@ -1,10 +1,10 @@
-<h2 mat-dialog-title>{{ data.title || 'Confirm' }}</h2>
+<h2 mat-dialog-title>{{ data.title || 'Confirmar' }}</h2>
 <div mat-dialog-content class="mat-typography" [innerHTML]="data.message"></div>
 <div mat-dialog-actions>
   <button mat-flat-button mat-dialog-close cdkFocusInitial>
-    {{ data.cancelButtonText || 'Cancel' }}
+    {{ data.cancelButtonText || 'Cancelar' }}
   </button>
   <button mat-flat-button color="primary" [mat-dialog-close]="true">
-    {{ data.confirmButtonText || 'Confirm' }}
+    {{ data.confirmButtonText || 'Confirmar' }}
   </button>
 </div>

@@ -2,16 +2,16 @@
   class="filter-menu-trigger"
   mat-button
   [matMenuTriggerFor]="menu"
-  aria-label="Filter menu"
+  aria-label="Menú de filtros"
   @.disabled>
   <mat-icon>filter_list</mat-icon>
   <label
-    >Filter<span *ngIf="filters?.length > 0"> ({{ filters?.length || 0 }})</span></label
+    >Filtros<span *ngIf="filters?.length > 0"> ({{ filters?.length || 0 }})</span></label
   >
   <mat-menu #menu="matMenu" class="filters">
     <div *ngIf="filters?.length > 0" class="p-3">
-      <div class="mat-body-strong mb-3">Applied Filters</div>
-      <mat-chip-list aria-label="Filter selection">
+      <div class="mat-body-strong mb-3">Filtros Aplicados</div>
+      <mat-chip-list aria-label="Selección de filtros">
         <mat-chip
           color="primary"
           *ngFor="let f of filters"

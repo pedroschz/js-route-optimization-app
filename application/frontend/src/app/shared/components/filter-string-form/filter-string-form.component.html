@@ -8,10 +8,10 @@
   </mat-form-field>
   <mat-form-field
     *ngIf="operationCtrl.value !== StringFilterOperation.Empty && valueCtrl as control">
-    <mat-label>Value</mat-label>
+    <mat-label>Valor</mat-label>
     <input matInput [formControl]="control" required />
     <mat-error *ngIf="control.errors?.required && (control.touched || control.dirty)">
-      Value is required
+      El valor es requerido
     </mat-error>
   </mat-form-field>
 </form>

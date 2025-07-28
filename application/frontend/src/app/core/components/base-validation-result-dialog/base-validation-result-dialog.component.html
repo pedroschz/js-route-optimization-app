@@ -1,11 +1,11 @@
-<h1 mat-dialog-title>Warning</h1>
+<h1 mat-dialog-title>Advertencia</h1>
 <div mat-dialog-content>
   <section *ngIf="shipmentTimeRangeWarnings?.length">
     <header>
-      Shipment{{
-        shipmentTimeRangeWarnings.length > 1 ? 's have time windows' : ' has time window'
+      Envío{{
+        shipmentTimeRangeWarnings.length > 1 ? 's tienen ventanas de tiempo' : ' tiene ventana de tiempo'
       }}
-      outside global start time and end time:
+      fuera del tiempo de inicio y fin global:
     </header>
     <p>
       <a *ngFor="let shipment of shipmentTimeRangeWarnings" (click)="editShipment.emit(shipment)">{{
@@ -15,8 +15,8 @@
   </section>
   <section *ngIf="allowedVehicleWarnings?.length">
     <header>
-      Shipment{{ allowedVehicleWarnings.length > 1 ? 's have' : ' has' }} vehicle constraint, but
-      none of the allowed vehicles selected:
+      Envío{{ allowedVehicleWarnings.length > 1 ? 's tienen' : ' tiene' }} restricción de vehículo, pero
+      ninguno de los vehículos permitidos está seleccionado:
     </header>
     <p>
       <a *ngFor="let shipment of allowedVehicleWarnings" (click)="editShipment.emit(shipment)">{{
@@ -26,8 +26,8 @@
   </section>
   <section *ngIf="vehicleTimeRangeWarnings?.length">
     <header>
-      Vehicle{{ vehicleTimeRangeWarnings.length > 1 ? 's have time windows' : ' has time window' }}
-      outside global start time and end time:
+      Vehículo{{ vehicleTimeRangeWarnings.length > 1 ? 's tienen ventanas de tiempo' : ' tiene ventana de tiempo' }}
+      fuera del tiempo de inicio y fin global:
     </header>
     <p>
       <a *ngFor="let vehicle of vehicleTimeRangeWarnings" (click)="editVehicle.emit(vehicle)">{{
@@ -43,7 +43,7 @@
     (click)="cancel.emit()"
     (keydown.enter)="cancel.emit()"
     (keydown.space)="cancel.emit()"
-    >Cancel</a
+    >Cancelar</a
   >
-  <button type="button" mat-raised-button color="primary" (click)="ok.emit()">OK</button>
+  <button type="button" mat-raised-button color="primary" (click)="ok.emit()">Aceptar</button>
 </div>

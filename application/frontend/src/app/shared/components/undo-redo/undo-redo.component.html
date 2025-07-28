@@ -2,21 +2,21 @@
   mat-button
   class="mat-elevation-z0"
   color=""
-  aria-label="Undo"
-  title="Undo the last change"
+  aria-label="Deshacer"
+  title="Deshacer el último cambio"
   (click)="onUndo()"
   [disabled]="(disabled$ | async) || (canUndo$ | async) !== true">
   <mat-icon>undo</mat-icon>
-  <span class="undo-redo-text">Undo</span>
+  <span class="undo-redo-text">Deshacer</span>
 </button>
 <button
   mat-button
   class="mat-elevation-z0"
   color=""
-  aria-label="Redo"
-  title="Redo the last change"
+  aria-label="Rehacer"
+  title="Rehacer el último cambio"
   (click)="onRedo()"
   [disabled]="(disabled$ | async) || (canRedo$ | async) !== true">
   <mat-icon>redo</mat-icon>
-  <span class="undo-redo-text">Redo</span>
+  <span class="undo-redo-text">Rehacer</span>
 </button>

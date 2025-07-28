@@ -6,16 +6,16 @@
 // Define a custom typography config that overrides the font-family as well as the
 // `headlines` and `body-1` levels.
 $custom-typography: mat.define-legacy-typography-config(
-  $font-family: 'Google Sans, Roboto, "Helvetica Neue", sans-serif',
+  $font-family: '"Helvetica Neue",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,sans-serif',
 );
 
 // Colors
-$blue: #4285f4;
-$blue-light: #7ab4f9;
-$blue-lighter: #d7e3f1;
-$blue-lightest: #f3f8ff;
-$blue-dark: #1a73e8;
-$blue-darker: #185abc;
+$blue: #8a63d2;
+$blue-light: #b19ce6;
+$blue-lighter: #e3dff4;
+$blue-lightest: #f7f5ff;
+$blue-dark: #7353b3;
+$blue-darker: #5b408c;
 $green: #0f9d58;
 $red: #d7261b;
 $red-light: #ea4335;
@@ -40,20 +40,20 @@ $darker: rgba(0, 0, 0, 0.87);
 
 // Color maps to create palettes for the theme
 $blue-map: (
-  50: #e8f0fe,
-  100: #c6dafc,
-  200: #a1c2fa,
-  300: #7baaf7,
-  400: #5e97f6,
-  500: #4285f4,
-  600: #3c7df3,
-  700: #3372f1,
-  800: #2b68ef,
-  900: #1d55ec,
+  50: #f3f0ff,
+  100: #e8e0ff,
+  200: #d4c7ff,
+  300: #b8a6ff,
+  400: #9b85ff,
+  500: #8a63d2,
+  600: #7d5ac8,
+  700: #6f51be,
+  800: #6148b4,
+  900: #533faa,
   A100: #ffffff,
-  A200: #eef2ff,
-  A400: #bbcbff,
-  A700: #a1b8ff,
+  A200: #f7f5ff,
+  A400: #e3dff4,
+  A700: #d4c7ff,
   contrast: (
     50: #000000,
     100: #000000,

@@ -2,16 +2,16 @@
   <div class="d-flex flex-column">
     <div class="d-flex flex-row global-row">
       <mat-form-field appearance="outline" class="item-lg">
-        <mat-label>Request Label</mat-label>
+        <mat-label>Etiqueta de Solicitud</mat-label>
         <input
           matInput
           type="text"
           (change)="onUpdateLabel($event.target.value)"
           [value]="globalSettings.label"
-          placeholder="Enter label" />
+          placeholder="Ingresar etiqueta" />
       </mat-form-field>
       <mat-form-field appearance="outline" class="item-lg">
-        <mat-label>Solve Strategy</mat-label>
+        <mat-label>Estrategia de Resolución</mat-label>
         <mat-select
           (selectionChange)="onUpdateSearchMode($event.value)"
           [value]="currentSearchMode">
@@ -21,7 +21,7 @@
         </mat-select>
       </mat-form-field>
       <mat-form-field appearance="outline" class="item-lg">
-        <mat-label>Time Limit (s)</mat-label>
+        <mat-label>Límite de Tiempo (s)</mat-label>
         <input
           matInput
           type="number"
@@ -29,16 +29,16 @@
           max="3600"
           [formControl]="timeout"
           (change)="onUpdateTimeout()"
-          placeholder="Seconds" />
-        <mat-error *ngIf="timeout.errors"> Must be in range 1-3600. </mat-error>
+          placeholder="Segundos" />
+        <mat-error *ngIf="timeout.errors"> Debe estar en el rango 1-3600. </mat-error>
       </mat-form-field>
       <div class="settings-traffic">
-        <div class="mat-body-strong">Traffic</div>
+        <div class="mat-body-strong">Tráfico</div>
         <mat-checkbox
           [checked]="globalSettings.traffic"
           color="primary"
           (change)="onUpdateTraffic($event.checked)">
-          Consider Traffic
+          Considerar Tráfico
         </mat-checkbox>
       </div>
     </div>
@@ -51,51 +51,51 @@
         </app-timezone-edit>
       </div>
       <div>
-        <div class="mat-body-strong">Populate transition polylines</div>
+        <div class="mat-body-strong">Poblar polilíneas de transición</div>
         <mat-slide-toggle
           color="primary"
           [checked]="isSelectPopulateTransitionPolylines"
           (change)="toggleSelectPopulateTransitionPolylines($event)"
           [formControl]="populateTransitionPolylines">
-          {{ isSelectPopulateTransitionPolylines ? 'On' : 'Off' }}
+          {{ isSelectPopulateTransitionPolylines ? 'Activado' : 'Desactivado' }}
         </mat-slide-toggle>
       </div>
       <div>
-        <div class="mat-body-strong">Allow large deadline despite interruption risk</div>
+        <div class="mat-body-strong">Permitir fecha límite grande a pesar del riesgo de interrupción</div>
         <mat-slide-toggle
           color="primary"
           [checked]="isSelectAllowLargeDeadlineDespiteInterruptionRisk"
           (change)="toggleSelectAllowLargeDeadlineDespiteInterruptionRisk($event)"
           [formControl]="allowLargeDeadlineDespiteInterruptionRisk">
-          {{ isSelectAllowLargeDeadlineDespiteInterruptionRisk ? 'On' : 'Off' }}
+          {{ isSelectAllowLargeDeadlineDespiteInterruptionRisk ? 'Activado' : 'Desactivado' }}
         </mat-slide-toggle>
       </div>
     </div>
     <div class="d-flex flex-row global-row">
       <div *ngIf="hasSolution$ | async">
-        <div class="mat-body-strong">Iterate on solution</div>
+        <div class="mat-body-strong">Iterar en solución</div>
         <mat-slide-toggle
           color="primary"
           [checked]="injectedSolution && (hasSolution$ | async)"
           (change)="toggleInjectedSolution($event)">
-          {{ injectedSolution ? 'On' : 'Off' }}
+          {{ injectedSolution ? 'Activado' : 'Desactivado' }}
         </mat-slide-toggle>
       </div>
       <div *ngIf="injectedSolution" class="settings-interpret">
-        <div class="mat-body-strong">Interpret injected solutions using labels</div>
+        <div class="mat-body-strong">Interpretar soluciones inyectadas usando etiquetas</div>
         <mat-slide-toggle
           color="primary"
           [checked]="isInterpretInjectedSolutionsUsingLabels"
           (change)="toggleInterpretInjectedSolutionsUsingLabels($event)"
           [formControl]="interpretInjectedSolutionsUsingLabels">
-          {{ isInterpretInjectedSolutionsUsingLabels ? 'On' : 'Off' }}
+          {{ isInterpretInjectedSolutionsUsingLabels ? 'Activado' : 'Desactivado' }}
         </mat-slide-toggle>
       </div>
     </div>
   </div>
   <div>
     <div *ngIf="injectedSolution && !constraintRelaxations.length">
-      <div class="mat-body-strong">Iteration relaxations</div>
+      <div class="mat-body-strong">Relajaciones de iteración</div>
       <mat-form-field appearance="outline">
         <mat-select [value]="0" (selectionChange)="initialRelaxationConstraintChanged($event)">
           <mat-option *ngFor="let key of relaxationLevelKeys" [value]="RelaxationLevel[key]">
@@ -105,7 +105,7 @@
       </mat-form-field>
     </div>
     <div class="settings-relaxation" *ngIf="injectedSolution && constraintRelaxations.length">
-      <div class="mat-body-strong">Iteration relaxations</div>
+      <div class="mat-body-strong">Relajaciones de iteración</div>
       <app-injected-relaxation-constraints-form
         [appearance]="'outline'"
         [maxToShow]="1"
@@ -117,8 +117,8 @@
         <button type="button" mat-button color="primary" (click)="editAllThresholds()">
           {{
             updatedTimeThresholds.length <= 1
-              ? 'Add more relaxations'
-              : 'Show ' + (updatedTimeThresholds.length - 1) + ' more'
+              ? 'Agregar más relajaciones'
+              : 'Mostrar ' + (updatedTimeThresholds.length - 1) + ' más'
           }}
         </button>
       </p>

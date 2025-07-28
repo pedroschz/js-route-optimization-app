@@ -1,10 +1,10 @@
 <form [formGroup]="form">
   <header class="time-window" *ngIf="!hideHeader">
-    <span>Time window</span>
+    <span>Ventana de tiempo</span>
     <button
       mat-icon-button
       type="button"
-      title="Remove time window"
+      title="Eliminar ventana de tiempo"
       (click)="remove.emit()"
       *ngIf="removable && form.enabled">
       <mat-icon svgIcon="delete"></mat-icon>
@@ -19,7 +19,7 @@
             [matDatepicker]="startDatePicker"
             [errorStateMatcher]="startErrorStateMatcher"
             formControlName="startDate" />
-          <mat-hint>Date</mat-hint>
+          <mat-hint>Fecha</mat-hint>
           <mat-datepicker-toggle matSuffix [for]="startDatePicker"></mat-datepicker-toggle>
           <mat-datepicker #startDatePicker [startAt]="startAt"></mat-datepicker>
         </mat-form-field>
@@ -32,16 +32,16 @@
             type="time"
             [errorStateMatcher]="startErrorStateMatcher"
             [formControl]="control" />
-          <mat-hint>Time</mat-hint>
+          <mat-hint>Hora</mat-hint>
           <mat-error *ngIf="control.errors?.timeString" [attr.title]="message.innerText">
-            <span #message>Invalid format</span>
+            <span #message>Formato inválido</span>
           </mat-error>
         </mat-form-field>
-        <span class="mat-body-strong pad-right to-text">to</span>
+        <span class="mat-body-strong pad-right to-text">a</span>
       </div>
       <ng-container *ngIf="form.errors && (showError(startDate) || showError(startTime))">
         <mat-error *ngIf="form.errors.startIncomplete" [attr.title]="message.innerText">
-          <span #message>Incomplete start</span>
+          <span #message>Inicio incompleto</span>
         </mat-error>
       </ng-container>
     </div>
@@ -53,7 +53,7 @@
             [matDatepicker]="endDatePicker"
             [errorStateMatcher]="endErrorStateMatcher"
             formControlName="endDate" />
-          <mat-hint>Date</mat-hint>
+          <mat-hint>Fecha</mat-hint>
           <mat-datepicker-toggle matSuffix [for]="endDatePicker"></mat-datepicker-toggle>
           <mat-datepicker #endDatePicker [startAt]="startAt"></mat-datepicker>
         </mat-form-field>
@@ -63,9 +63,9 @@
             type="time"
             [errorStateMatcher]="endErrorStateMatcher"
             [formControl]="control" />
-          <mat-hint>Time</mat-hint>
+          <mat-hint>Hora</mat-hint>
           <mat-error *ngIf="control.errors?.timeString" [attr.title]="message.innerText">
-            <span #message>Invalid format</span>
+            <span #message>Formato inválido</span>
           </mat-error>
         </mat-form-field>
       </div>
@@ -82,27 +82,27 @@
             (form.errors.endDate || form.errors.endTime)
           "
           [attr.title]="message.innerText">
-          <span #message>End must be greater than or equal to start</span>
+          <span #message>El final debe ser mayor o igual al inicio</span>
         </mat-error>
         <mat-error *ngIf="form.errors.endIncomplete" [attr.title]="message.innerText">
-          <span #message>Incomplete end</span>
+          <span #message>Final incompleto</span>
         </mat-error>
       </ng-container>
     </div>
   </section>
   <ng-container *ngIf="!hideSoftTime">
     <header>
-      Soft time window
+      Ventana de tiempo suave
       <div class="text__caption text--dark">
         <ng-container *ngIf="disableSoftTime; else enabledSoftTimeMessage">
-          Remove all other time windows to enable setting a soft time window
+          Elimina todas las demás ventanas de tiempo para habilitar el establecimiento de una ventana de tiempo suave
         </ng-container>
         <ng-template #enabledSoftTimeMessage>
           <ng-container *ngIf="hasSoftTimeWindow; else enabledNoSoftTimeMessage">
-            This will be removed if you add a second time window
+            Esto se eliminará si agregas una segunda ventana de tiempo
           </ng-container>
           <ng-template #enabledNoSoftTimeMessage>
-            A preferred time window within the overall time window
+            Una ventana de tiempo preferida dentro de la ventana de tiempo general
           </ng-template>
         </ng-template>
       </div>
@@ -116,7 +116,7 @@
               [matDatepicker]="softStartDatePicker"
               [errorStateMatcher]="softStartErrorStateMatcher"
               formControlName="softStartDate" />
-            <mat-hint>Date</mat-hint>
+            <mat-hint>Fecha</mat-hint>
             <mat-datepicker-toggle matSuffix [for]="softStartDatePicker"></mat-datepicker-toggle>
             <mat-datepicker #softStartDatePicker [startAt]="startAt"></mat-datepicker>
           </mat-form-field>
@@ -129,25 +129,25 @@
               type="time"
               [errorStateMatcher]="softStartErrorStateMatcher"
               [formControl]="control" />
-            <mat-hint>Time</mat-hint>
+            <mat-hint>Hora</mat-hint>
             <mat-error *ngIf="control.errors?.timeString" [attr.title]="message.innerText">
-              <span #message>Invalid format</span>
+              <span #message>Formato inválido</span>
             </mat-error>
           </mat-form-field>
           <span
             class="mat-body-strong pad-right to-text"
             [ngClass]="{ 'text--mute': disableSoftTime }"
-            >to</span
+            >a</span
           >
         </div>
         <ng-container *ngIf="form.errors && (showError(softStartDate) || showError(softStartTime))">
           <mat-error
             *ngIf="!form.errors.softStartIncomplete && form.errors.softStart"
             [attr.title]="message.innerText">
-            <span #message>Soft start must be within time window</span>
+            <span #message>El inicio suave debe estar dentro de la ventana de tiempo</span>
           </mat-error>
           <mat-error *ngIf="form.errors.softStartIncomplete" [attr.title]="message.innerText">
-            <span #message>Incomplete soft start</span>
+            <span #message>Inicio suave incompleto</span>
           </mat-error>
         </ng-container>
       </div>
@@ -159,7 +159,7 @@
               [matDatepicker]="softEndDatePicker"
               [errorStateMatcher]="softEndErrorStateMatcher"
               formControlName="softEndDate" />
-            <mat-hint>Date</mat-hint>
+            <mat-hint>Fecha</mat-hint>
             <mat-datepicker-toggle matSuffix [for]="softEndDatePicker"></mat-datepicker-toggle>
             <mat-datepicker #softEndDatePicker [startAt]="startAt"></mat-datepicker>
           </mat-form-field>
@@ -172,9 +172,9 @@
               type="time"
               [errorStateMatcher]="softEndErrorStateMatcher"
               [formControl]="control" />
-            <mat-hint>Time</mat-hint>
+            <mat-hint>Hora</mat-hint>
             <mat-error *ngIf="control.errors?.timeString" [attr.title]="message.innerText">
-              <span #message>Invalid format</span>
+              <span #message>Formato inválido</span>
             </mat-error>
           </mat-form-field>
         </div>
@@ -182,10 +182,10 @@
           <mat-error
             *ngIf="!form.errors.softEndIncomplete && form.errors.softEnd"
             [attr.title]="message.innerText">
-            <span #message>Soft end must be within time window</span>
+            <span #message>El final suave debe estar dentro de la ventana de tiempo</span>
           </mat-error>
           <mat-error *ngIf="form.errors.softEndIncomplete" [attr.title]="message.innerText">
-            <span #message>Incomplete soft end</span>
+            <span #message>Final suave incompleto</span>
           </mat-error>
           <mat-error
             *ngIf="
@@ -194,14 +194,14 @@
               (form.errors.softEndDate || form.errors.softEndTime)
             "
             [attr.title]="message.innerText">
-            <span #message>Soft end must be greater than or equal to soft start</span>
+            <span #message>El final suave debe ser mayor o igual al inicio suave</span>
           </mat-error>
         </ng-container>
       </div>
     </section>
     <section>
       <mat-form-field [appearance]="appearance" class="item-md pad-right">
-        <mat-label>Earliness penalty</mat-label>
+        <mat-label>Penalización por llegada temprana</mat-label>
         <input
           matInput
           type="number"
@@ -210,7 +210,7 @@
           [required]="hasSoftTimeStart"
           pattern="\d*(\.\d+)?"
           formControlName="earlinessPenalty" />
-        <span matSuffix>cost/hr</span>
+        <span matSuffix>costo/hora</span>
         <mat-error
           *ngIf="
             earlinessPenalty.errors?.required &&
@@ -218,18 +218,18 @@
             (earlinessPenalty.touched || earlinessPenalty.dirty)
           "
           [attr.title]="message.innerText">
-          <span #message>Earliness penalty required</span>
+          <span #message>Se requiere penalización por llegada temprana</span>
         </mat-error>
         <mat-error
           *ngIf="
             earlinessPenalty.errors?.pattern && (earlinessPenalty.touched || earlinessPenalty.dirty)
           "
           [attr.title]="message.innerText">
-          <span #message>Non-negative number required</span>
+          <span #message>Se requiere un número no negativo</span>
         </mat-error>
       </mat-form-field>
       <mat-form-field [appearance]="appearance" class="item-md pad-right">
-        <mat-label>Lateness penalty</mat-label>
+        <mat-label>Penalización por llegada tardía</mat-label>
         <input
           matInput
           type="number"
@@ -238,7 +238,7 @@
           [required]="hasSoftTimeEnd"
           pattern="\d*(\.\d+)?"
           formControlName="latenessPenalty" />
-        <span matSuffix>cost/hr</span>
+        <span matSuffix>costo/hora</span>
         <mat-error
           *ngIf="
             latenessPenalty.errors?.required &&
@@ -246,14 +246,14 @@
             (latenessPenalty.touched || latenessPenalty.dirty)
           "
           [attr.title]="message.innerText">
-          <span #message>Lateness penalty required</span>
+          <span #message>Se requiere penalización por llegada tardía</span>
         </mat-error>
         <mat-error
           *ngIf="
             latenessPenalty.errors?.pattern && (latenessPenalty.touched || latenessPenalty.dirty)
           "
           [attr.title]="message.innerText">
-          <span #message>Non-negative number required</span>
+          <span #message>Se requiere un número no negativo</span>
         </mat-error>
       </mat-form-field>
     </section>

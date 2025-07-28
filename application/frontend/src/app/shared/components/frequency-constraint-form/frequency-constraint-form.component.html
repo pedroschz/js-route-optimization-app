@@ -4,17 +4,17 @@
       <app-duration-min-sec-form
         [parentFormGroup]="minBreakDuration"
         [errorStateMatcher]="frequencyConstraintErrorStateMatcher"
-        [labelName]="'Min Break Duration'"></app-duration-min-sec-form>
+        [labelName]="'Duración Mínima de Descanso'"></app-duration-min-sec-form>
       <app-duration-min-sec-form
         [parentFormGroup]="maxInterBreakDuration"
         [errorStateMatcher]="frequencyConstraintErrorStateMatcher"
-        [labelName]="'Max Inter Break Duration'"></app-duration-min-sec-form>
+        [labelName]="'Duración Máxima Entre Descansos'"></app-duration-min-sec-form>
     </section>
     <div class="delete-frequency-constraint">
       <button
         mat-icon-button
         type="button"
-        title="Remove frequency constraint"
+        title="Eliminar restricción de frecuencia"
         (click)="remove.emit()"
         *ngIf="form.enabled">
         <mat-icon svgIcon="delete"></mat-icon>

@@ -1,12 +1,12 @@
 <div *ngFor="let group of control?.controls; index as i" class="mat-typography" [formGroup]="group">
   <div style="display: flex">
     <mat-form-field>
-      <mat-label>Visit Type</mat-label>
+      <mat-label>Tipo de Visita</mat-label>
       <input
         matInput
         formControlName="visitType"
         type="text"
-        placeholder="visit type"
+        placeholder="tipo de visita"
         [matAutocomplete]="auto"
         (focus)="setAutocompleteFocus(i)" />
       <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
@@ -17,19 +17,19 @@
       <mat-error
         *ngIf="group.getError('required', 'visitType')"
         [attr.title]="errorMessage.innerText">
-        <span #errorMessage>Required</span>
+        <span #errorMessage>Requerido</span>
       </mat-error>
     </mat-form-field>
     <app-duration-min-sec-form
       [parentFormGroup]="group.controls.extraDuration"
       [errorStateMatcher]="extraVisitDurationErrorStateMatcher"
-      [labelName]="'Duration'"></app-duration-min-sec-form>
+      [labelName]="'Duración'"></app-duration-min-sec-form>
     <button
       type="button"
       class="clear-place"
       (click)="removeExtraVisitDuration(i)"
       mat-icon-button
-      title="Remove duration"
+      title="Eliminar duración"
       [disabled]="disabled">
       <mat-icon class="icon--smaller m-0" svgIcon="delete"></mat-icon>
     </button>

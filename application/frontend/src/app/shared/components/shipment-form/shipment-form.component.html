@@ -7,7 +7,7 @@
         unsethighlighted: isUnset(formFields.Label)
       }">
       <mat-form-field class="flex-grow-1 align-self-end">
-        <mat-chip-list #labelChipList aria-label="Shipment labels" [disabled]="disabled">
+        <mat-chip-list #labelChipList aria-label="Etiquetas de envío" [disabled]="disabled">
           <mat-chip
             class="shipment-chip"
             *ngFor="let label of labels; let i = index"
@@ -17,7 +17,7 @@
             <mat-icon matChipRemove *ngIf="!disabled">cancel</mat-icon>
           </mat-chip>
           <input
-            placeholder="Label"
+            placeholder="Etiqueta"
             [formControl]="labelCtrl"
             [matChipInputFor]="labelChipList"
             [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
@@ -38,7 +38,7 @@
       class="flex-grow-1 d-flex padded-content align-self-stretch shipment-type"
       [ngClass]="{ unsethighlighted: isUnset(formFields.ShipmentType) }">
       <mat-form-field class="shipment-type-list">
-        <mat-label>Shipment type</mat-label>
+        <mat-label>Tipo de envío</mat-label>
         <input
           #shipmentTypeInput
           [formControl]="shipmentTypeCtrl"
@@ -71,7 +71,7 @@
       }">
       <div class="align-self-end">
         <mat-form-field>
-          <mat-label>Penalty cost</mat-label>
+          <mat-label>Costo de penalización</mat-label>
           <input
             matInput
             type="number"
@@ -102,10 +102,10 @@
       unsethighlighted: isUnset(formFields.AllowedVehicles)
     }">
     <mat-form-field class="w-100 pad-right">
-      <mat-label>Allowed vehicles</mat-label>
+      <mat-label>Vehículos permitidos</mat-label>
       <mat-chip-list
         #allowedVehicleChipList
-        aria-label="Allowed vehicle selection"
+        aria-label="Selección de vehículos permitidos"
         [disabled]="disabled">
         <mat-chip
           *ngFor="let vehicle of allowedVehicles"
@@ -154,14 +154,14 @@
     class="d-flex flex-column padded-content edit-menu-content"
     [ngClass]="{ unsethighlighted: isUnset(formFields.CostsPerVehicle) }">
     <header>
-      <div><span class="mat-h4">Costs per-vehicle</span> ({{ costsPerVehicleMap.length }})</div>
+      <div><span class="mat-h4">Costos por vehículo</span> ({{ costsPerVehicleMap.length }})</div>
       <button
         type="button"
         mat-button
         color="primary"
         (click)="addPerVehicleCost()"
         [disabled]="disabled">
-        Add per-vehicle cost
+        Agregar costo por vehículo
       </button>
       <app-bulk-edit-unset
         *ngIf="bulkEdit"
@@ -177,7 +177,7 @@
         perVehicleCosts.errors?.duplicateValues?.cost &&
         (perVehicleCosts.touched || perVehicleCosts.dirty)
       ">
-      <span #errorMessage>Cannot have duplicate cost values</span>
+      <span #errorMessage>No puede tener valores de costo duplicados</span>
     </mat-error>
     <div formArrayName="perVehicleCosts">
       <div
@@ -185,7 +185,7 @@
         [formGroupName]="perVehicleCostIndex"
         class="d-flex flex-row align-items-end">
         <mat-form-field class="item-sm padded-form-field pad-right">
-          <mat-label>Cost</mat-label>
+          <mat-label>Costo</mat-label>
           <input
             matInput
             type="number"
@@ -194,15 +194,15 @@
             (ngModelChange)="updatePerVehicleCost(perVehicleCostIndex, $event)"
             class="flex-grow-1" />
           <mat-error *ngIf="pvc.get('cost').errors?.min">
-            <span #patternMessage>Non-negative number required</span>
+            <span #patternMessage>Se requiere un número no negativo</span>
           </mat-error>
         </mat-form-field>
 
         <mat-form-field class="flex-grow-1">
-          <mat-label>Vehicles</mat-label>
+          <mat-label>Vehículos</mat-label>
           <mat-chip-list
             #costVehiclesChipList
-            aria-label="Allowed vehicle selection"
+            aria-label="Selección de vehículos permitidos"
             [disabled]="disabled">
             <mat-chip
               *ngFor="let costVehicle of costsPerVehicleMap[perVehicleCostIndex][1]"
@@ -249,7 +249,7 @@
           class="clear-place"
           (click)="removePerVehicleCost(perVehicleCostIndex)"
           mat-icon-button
-          title="Remove per-vehicle cost"
+          title="Eliminar costo por vehículo"
           [disabled]="disabled">
           <mat-icon class="icon--smaller m-0" svgIcon="delete"></mat-icon>
         </button>
@@ -261,7 +261,7 @@
     class="shipment-pickup-delivery-limits padded-content"
     [ngClass]="{ unsethighlighted: isUnset(formFields.PickupToDeliveryLimits) }">
     <header>
-      <span class="mat-h4">Pickup-to-delivery limits</span>
+      <span class="mat-h4">Límites de recolección a entrega</span>
       <app-bulk-edit-unset
         *ngIf="bulkEdit"
         class="float-right"
@@ -273,7 +273,7 @@
     <div [formGroup]="pickupToDeliveryLimits">
       <app-duration-min-sec-form
         [parentFormGroup]="pickupToDeliveryLimits.controls.timeLimit"
-        [labelName]="'Time limit'"
+        [labelName]="'Límite de tiempo'"
         [showUnset]="bulkEdit"
         [fieldName]="formFields.TimeLimit"
         [isUnset]="isUnset(formFields.TimeLimit)"
@@ -282,7 +282,7 @@
 
       <app-duration-min-sec-form
         [parentFormGroup]="pickupToDeliveryLimits.controls.absoluteDetourLimit"
-        [labelName]="'Absolute detour limit'"
+        [labelName]="'Límite de desvío absoluto'"
         [showUnset]="bulkEdit"
         [fieldName]="formFields.AbsoluteDetourLimit"
         [isUnset]="isUnset(formFields.AbsoluteDetourLimit)"
@@ -291,7 +291,7 @@
 
       <div [ngClass]="{ unsethighlighted: isUnset(formFields.RelativeDetourLimit) }">
         <mat-form-field class="item-sm padded-form-field">
-          <mat-label>Relative detour limit</mat-label>
+          <mat-label>Límite de desvío relativo</mat-label>
           <input
             matInput
             type="number"
@@ -326,16 +326,16 @@
     }">
     <header>
       <div>
-        <span class="mat-h4">Demands</span> ({{ loadDemands.length }})
+        <span class="mat-h4">Demandas</span> ({{ loadDemands.length }})
         <mat-error
           class="mb-4"
           *ngIf="loadDemands.errors && (loadDemands.touched || loadDemands.dirty)"
           [attr.title]="errorMessage.innerText">
-          <span #errorMessage>Cannot have duplicate demand types</span>
+          <span #errorMessage>No puede haber tipos de demanda duplicados</span>
         </mat-error>
       </div>
       <button type="button" mat-button color="primary" (click)="addDemand()" [disabled]="disabled">
-        Add demand
+        Agregar demanda
       </button>
       <app-bulk-edit-unset
         *ngIf="bulkEdit"

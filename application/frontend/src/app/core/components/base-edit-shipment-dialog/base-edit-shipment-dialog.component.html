@@ -1,22 +1,22 @@
 <div mat-dialog-title>
   <div class="form-title">
     <h3>
-      {{ bulkEdit ? 'Bulk editing ' + bulkNumber + ' shipments' : 'Shipment #' + shipment?.id }}
+      {{ bulkEdit ? 'Edición masiva de ' + bulkNumber + ' envíos' : 'Envío #' + shipment?.id }}
     </h3>
     <mat-button-toggle-group
       name="visitCategory"
-      aria-label="Visit Request Type"
+      aria-label="Tipo de Solicitud de Visita"
       [value]="activeVisitCategory"
       (change)="onVisitCategoryChange($event.value)">
       <mat-button-toggle [value]="VisitCategory.Pickup" [disableRipple]="true">
-        <mat-icon svgIcon="pickup"></mat-icon>Pickup
+        <mat-icon svgIcon="pickup"></mat-icon>Recolección
       </mat-button-toggle>
       <mat-button-toggle [value]="VisitCategory.Delivery" [disableRipple]="true">
-        <mat-icon svgIcon="dropoff"></mat-icon>Delivery
+        <mat-icon svgIcon="dropoff"></mat-icon>Entrega
       </mat-button-toggle>
     </mat-button-toggle-group>
   </div>
-  <button mat-icon-button type="button" title="Cancel" (click)="cancel.emit()">
+  <button mat-icon-button type="button" title="Cancelar" (click)="cancel.emit()">
     <mat-icon svgIcon="clear"></mat-icon>
   </button>
 </div>
@@ -37,12 +37,12 @@
         (unsetEvent)="onUnsetChange($event)">
       </app-shipment-form>
       <mat-error *ngIf="visitRequestsMissing && !bulkEdit"
-        >A pickup or delivery request alternative is required
+        >Se requiere una alternativa de solicitud de recolección o entrega
       </mat-error>
     </section>
     <section class="visit-requests">
       <header *ngIf="isShowingPickups; else deliveryRequestsHeader">
-        <div><span class="mat-h3">Pickup request alternatives</span> ({{ pickups.length }})</div>
+        <div><span class="mat-h3">Alternativas de solicitud de recolección</span> ({{ pickups.length }})</div>
         <button
           *ngIf="!disabled"
           type="button"
@@ -50,13 +50,13 @@
           color="primary"
           (click)="addPickup()"
           [disabled]="addVisitRequestsDisabled">
-          Add pickup alternative
+          Agregar alternativa de recolección
         </button>
       </header>
       <ng-template #deliveryRequestsHeader>
         <header>
           <div>
-            <span class="mat-h3">Delivery request alternatives</span> ({{ deliveries.length }})
+            <span class="mat-h3">Alternativas de solicitud de entrega</span> ({{ deliveries.length }})
           </div>
           <button
             *ngIf="!disabled"
@@ -65,7 +65,7 @@
             color="primary"
             (click)="addDelivery()"
             [disabled]="addVisitRequestsDisabled">
-            Add delivery alternative
+            Agregar alternativa de entrega
           </button>
         </header>
       </ng-template>
@@ -120,7 +120,7 @@
     (click)="cancel.emit()"
     (keydown.enter)="cancel.emit()"
     (keydown.space)="cancel.emit()"
-    >Cancel</a
+    >Cancelar</a
   >
   <button
     type="button"
@@ -128,6 +128,6 @@
     color="primary"
     (click)="onSave()"
     [disabled]="invalid || disabled">
-    {{ bulkEdit ? 'Overwrite' : 'Save' }}
+    {{ bulkEdit ? 'Sobrescribir' : 'Guardar' }}
   </button>
 </div>

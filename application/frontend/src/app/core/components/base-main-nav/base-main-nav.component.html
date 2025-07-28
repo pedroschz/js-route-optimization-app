@@ -11,7 +11,7 @@
       (click)="scenarioClick.emit()"
       [ngClass]="{ selected: page === pages.ScenarioPlanning }">
       <ng-container *ngTemplateOutlet="disabled ? bulletLarge : checkmarkLarge"></ng-container>
-      <span class="nav-subtitle">Request Planning</span>
+      <span class="nav-subtitle">Planificación de Solicitud</span>
     </button>
   </div>
   <div class="nav-item nav-subitem nav-page-button">
@@ -38,12 +38,12 @@
             </g>
           </g>
         </svg>
-        Shipments
+        Envíos
       </span>
     </button>
     <button
       mat-mini-fab
-      aria-label="Add shipment"
+      aria-label="Agregar envío"
       class="main-nav-add-button blue-svg-icon"
       (click)="addShipment.emit()">
       <mat-icon svgIcon="add"></mat-icon>
@@ -70,12 +70,12 @@
               fill="rgba(0, 0, 0, 0.87)" />
           </g>
         </svg>
-        Vehicles
+        Vehículos
       </span>
     </button>
     <button
       mat-mini-fab
-      aria-label="Add vehicle"
+      aria-label="Agregar vehículo"
       class="main-nav-add-button blue-svg-icon"
       (click)="addVehicle.emit()">
       <mat-icon svgIcon="add"></mat-icon>
@@ -92,10 +92,10 @@
           hasSolution ? (hasSolutionWarning ? cautionLarge : checkmarkLarge) : bulletLarge
         ">
       </ng-container>
-      <span class="nav-subtitle"> Response </span>
+      <span class="nav-subtitle"> Respuesta </span>
       <span class="warning-label" [ngSwitch]="isSolutionIllegal" *ngIf="hasSolutionWarning">
-        <ng-container *ngSwitchCase="true">Illegal</ng-container>
-        <ng-container *ngSwitchDefault>Stale</ng-container>
+        <ng-container *ngSwitchCase="true">Ilegal</ng-container>
+        <ng-container *ngSwitchDefault>Obsoleto</ng-container>
       </span>
     </button>
   </div>
@@ -103,8 +103,8 @@
 </div>
 <div class="nav-container mat-body-strong">
   <div class="nav-item nav-subitem generation-label" *ngIf="solutionTime">
-    Generated {{ routeCount }} route{{ routeCount > 1 ? 's' : '' }} in
-    {{ solveSeconds | number: '1.2-2' }} seconds
+    Generado {{ routeCount }} ruta{{ routeCount > 1 ? 's' : '' }} en
+    {{ solveSeconds | number: '1.2-2' }} segundos
   </div>
   <div class="nav-item nav-subitem">
     <app-generate-button

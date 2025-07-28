@@ -1,4 +1,4 @@
-<h1 mat-dialog-title>Upload shipments and vehicles from CSV</h1>
+<h1 mat-dialog-title>Subir envíos y vehículos desde CSV</h1>
 <div mat-dialog-content>
   <mat-horizontal-stepper
     (selectionChange)="onStepperSelectionChange($event)"
@@ -7,31 +7,31 @@
     <!-- step 1 - open file -->
     <mat-step [stepControl]="uploadForm">
       <form [formGroup]="uploadForm">
-        <ng-template matStepLabel>Upload File</ng-template>
+        <ng-template matStepLabel>Subir Archivo</ng-template>
         <p>
-          This dialog will guide you through the process of uploading a set of shipments and/or
-          vehicles from CSV files. This method only supports a subset of the fields that the Cloud
-          Fleet Routing API supports. Please use the JSON uploader for full API support.
+          Este diálogo te guiará a través del proceso de subir un conjunto de envíos y/o
+          vehículos desde archivos CSV. Este método solo admite un subconjunto de los campos que la API
+          de Cloud Fleet Routing admite. Por favor usa el cargador JSON para soporte completo de la API.
         </p>
         <div>
-          You may download sample CSVs below. If you use the template CSVs, or upload your own files
-          with column names matching the template CSVs, uploaded data will be automatically mapped
-          to the correct API fields.
+          Puedes descargar archivos CSV de ejemplo a continuación. Si usas las plantillas CSV, o subes tus propios archivos
+          con nombres de columnas que coincidan con las plantillas CSV, los datos subidos se mapearán automáticamente
+          a los campos correctos de la API.
           <ul>
-            <li><a href="javascript:void(0)" (click)="downloadShipmentsSample()">Shipments</a></li>
-            <li><a href="javascript:void(0)" (click)="downloadVehiclesSample()">Vehicles</a></li>
+            <li><a href="javascript:void(0)" (click)="downloadShipmentsSample()">Envíos</a></li>
+            <li><a href="javascript:void(0)" (click)="downloadVehiclesSample()">Vehículos</a></li>
           </ul>
         </div>
-        <h4 class="margin-bottom-0">Select your timezone</h4>
+        <h4 class="margin-bottom-0">Selecciona tu zona horaria</h4>
         <app-timezone-edit
           appearance="outline"
           [currentTimezone]="timezone"
           (timezoneSelected)="onTimezoneSelected($event)"></app-timezone-edit>
-        <h4 class="margin-bottom-0">Select file(s) to upload</h4>
+        <h4 class="margin-bottom-0">Selecciona archivo(s) para subir</h4>
         <div class="file-input">
           <div class="file-input__form-field">
             <mat-form-field>
-              <mat-label>Shipments file</mat-label>
+              <mat-label>Archivo de envíos</mat-label>
               <input
                 matInput
                 [readonly]="true"
@@ -39,7 +39,7 @@
                 (click)="selectShipmentFile()" />
             </mat-form-field>
             <button type="button" mat-raised-button cdkFocusInitial (click)="selectShipmentFile()">
-              Choose a File
+              Elegir Archivo
             </button>
           </div>
           <input
@@ -52,7 +52,7 @@
         <div class="file-input">
           <div class="file-input__form-field">
             <mat-form-field>
-              <mat-label>Vehicles file</mat-label>
+              <mat-label>Archivo de vehículos</mat-label>
               <input
                 matInput
                 [readonly]="true"
@@ -60,7 +60,7 @@
                 (click)="selectVehicleFile()" />
             </mat-form-field>
             <button type="button" mat-raised-button (click)="selectVehicleFile()">
-              Choose a File
+              Elegir Archivo
             </button>
           </div>
           <input
@@ -76,24 +76,24 @@
     <!-- step 2 - preview -->
     <mat-step>
       <ng-template matStepLabel>{{
-        shipmentFileInput && vehicleFileInput ? 'Preview CSVs' : 'Preview CSV'
+        shipmentFileInput && vehicleFileInput ? 'Vista Previa de CSVs' : 'Vista Previa de CSV'
       }}</ng-template>
       <div *ngIf="!isLoadingCsv; else loading">
         <p>
           {{
             shipmentFile && vehicleFile
-              ? 'If the tables below do not look as expected, try using the template files from the previous page.'
-              : 'If the table below does not look as expected, try using a template file from the previous page.'
+              ? 'Si las tablas de abajo no se ven como esperabas, intenta usar los archivos de plantilla de la página anterior.'
+              : 'Si la tabla de abajo no se ve como esperabas, intenta usar un archivo de plantilla de la página anterior.'
           }}
         </p>
         <mat-tab-group [selectedIndex]="shipmentFile ? 0 : vehicleFile ? 1 : 2">
-          <mat-tab label="Shipments" [disabled]="!shipmentFile">
+          <mat-tab label="Envíos" [disabled]="!shipmentFile">
             <div *ngIf="shipmentFile">
               <p *ngIf="shipmentPreviewData.length" class="mt-3">
                 {{
                   shipmentPreviewData.length < previewRows
-                    ? 'Previewing all rows.'
-                    : 'Previewing the first ' + previewRows + ' rows.'
+                    ? 'Vista previa de todas las filas.'
+                    : 'Vista previa de las primeras ' + previewRows + ' filas.'
                 }}
               </p>
               <div class="preview-table">
@@ -114,13 +114,13 @@
               </div>
             </div>
           </mat-tab>
-          <mat-tab label="Vehicles" [disabled]="!vehicleFile">
+          <mat-tab label="Vehículos" [disabled]="!vehicleFile">
             <div *ngIf="vehicleFile">
               <p *ngIf="vehiclePreviewData.length" class="mt-3">
                 {{
                   vehiclePreviewData.length < previewRows
-                    ? 'Previewing all rows.'
-                    : 'Previewing the first ' + previewRows + ' rows.'
+                    ? 'Vista previa de todas las filas.'
+                    : 'Vista previa de las primeras ' + previewRows + ' filas.'
                 }}
               </p>
               <div class="preview-table">
@@ -147,21 +147,21 @@
 
     <!-- step 3 - map columns -->
     <mat-step>
-      <ng-template matStepLabel>Map Columns</ng-template>
+      <ng-template matStepLabel>Mapear Columnas</ng-template>
       <p>
-        Map the headers of the CSV to the available API fields below. Columns that are not mapped
-        will be discarded.
+        Mapea los encabezados del CSV a los campos disponibles de la API a continuación. Las columnas que no se mapeen
+        serán descartadas.
       </p>
       <p *ngIf="autoMappingUsed">
-        One or more columns were automatically mapped based on their name.
+        Una o más columnas fueron mapeadas automáticamente basándose en su nombre.
       </p>
       <mat-tab-group [selectedIndex]="shipmentFile ? 0 : vehicleFile ? 1 : 2">
-        <mat-tab label="Shipments" [disabled]="!shipmentFile">
+        <mat-tab label="Envíos" [disabled]="!shipmentFile">
           <div *ngIf="shipmentFile" class="mt-3">
             <form [formGroup]="mappingFormShipments">
               <div>
                 <div class="margin-bottom-1rem">
-                  <mat-chip-list aria-label="Column mappings">
+                  <mat-chip-list aria-label="Mapeos de columnas">
                     <mat-chip
                       *ngFor="let mapping of shipmentChipList"
                       (removed)="removeChip(mapping, true, false)">
@@ -180,7 +180,7 @@
                       [formControlName]="field"
                       (selectionChange)="setMapping(field, $event.value, true, false)"
                       [errorStateMatcher]="getErrorStateMatcher(field)">
-                      <mat-option>- Unused -</mat-option>
+                      <mat-option>- Sin usar -</mat-option>
                       <mat-option
                         *ngFor="let header of shipmentPreviewCsvColumns"
                         [value]="header"
@@ -197,12 +197,12 @@
             </form>
           </div>
         </mat-tab>
-        <mat-tab label="Vehicles" [disabled]="!vehicleFile">
+        <mat-tab label="Vehículos" [disabled]="!vehicleFile">
           <div *ngIf="vehicleFile" class="mt-3">
             <form [formGroup]="mappingFormVehicles">
               <div>
                 <div class="margin-bottom-1rem">
-                  <mat-chip-list aria-label="Column mappings">
+                  <mat-chip-list aria-label="Mapeos de columnas">
                     <mat-chip
                       *ngFor="let mapping of vehicleChipList"
                       (removed)="removeChip(mapping, false, true)">
@@ -221,7 +221,7 @@
                       [formControlName]="field"
                       (selectionChange)="setMapping(field, $event.value, false, true)"
                       [errorStateMatcher]="getErrorStateMatcher(field)">
-                      <mat-option>- Unused -</mat-option>
+                      <mat-option>- Sin usar -</mat-option>
                       <mat-option
                         *ngFor="let header of vehiclePreviewCsvColumns"
                         [value]="header"
@@ -243,32 +243,32 @@
 
     <!-- step 4 - adjust/finish -->
     <mat-step>
-      <ng-template matStepLabel>Geocode and Validate</ng-template>
+      <ng-template matStepLabel>Geocodificar y Validar</ng-template>
       <div *ngIf="!isValidatingWithApi; else validating" class="geocode-results">
         <ng-container *ngIf="!errorValidating; else validationErrorMessages">
           <div *ngIf="!geocodingErrorsShipments?.length && !geocodingErrorsVehicles?.length">
-            CSV successfully loaded and geocoded. If you would like to make changes, you may:
+            CSV cargado y geocodificado exitosamente. Si deseas hacer cambios, puedes:
             <ul>
-              <li>Continue to the request planner to edit the data</li>
+              <li>Continuar al planificador de solicitudes para editar los datos</li>
               <li>
-                Fix the address{{ shipmentFile && vehicleFile ? 'es' : '' }} in the uploaded CSV{{
+                Corregir la dirección{{ shipmentFile && vehicleFile ? 'es' : '' }} en el CSV subido{{
                   shipmentFile && vehicleFile ? 's' : ''
                 }}
-                and try uploading again
+                e intentar subir de nuevo
               </li>
             </ul>
-            <p>Click Finish to go to the request planner.</p>
+            <p>Haz clic en Finalizar para ir al planificador de solicitudes.</p>
           </div>
           <div *ngIf="geocodingErrorsShipments?.length || geocodingErrorsVehicles?.length">
-            <mat-error>CSV loaded, but some entries could not be geocoded. You may:</mat-error>
+            <mat-error>CSV cargado, pero algunas entradas no pudieron ser geocodificadas. Puedes:</mat-error>
             <ul>
-              <li>Manually correct the entries below</li>
-              <li>Remove the entries from the request below</li>
+              <li>Corregir manualmente las entradas de abajo</li>
+              <li>Eliminar las entradas de la solicitud de abajo</li>
               <li>
-                Fix the address{{ shipmentFile && vehicleFile ? 'es' : '' }} in the uploaded CSV{{
+                Corregir la dirección{{ shipmentFile && vehicleFile ? 'es' : '' }} en el CSV subido{{
                   shipmentFile && vehicleFile ? 's' : ''
                 }}
-                and try uploading again
+                e intentar subir de nuevo
               </li>
             </ul>
           </div>
@@ -278,12 +278,12 @@
               class="col d-flex flex-column resolve-geocode-errors">
               <!-- shipments -->
               <div *ngIf="geocodingErrorsShipments?.length" class="mb-4">
-                <h3 class="mb-1">Shipments</h3>
+                <h3 class="mb-1">Envíos</h3>
                 <div *ngFor="let result of geocodingErrorsShipments" class="d-flex flex-row mb-1">
                   <div class="d-flex flex-column flex-grow-1">
                     <mat-form-field class="pb-0">
                       <mat-label>
-                        Row #{{ result.index + 2 }}
+                        Fila #{{ result.index + 2 }}
                         <!-- +2 to account for header and 1-based row numbers -->
                         <span *ngIf="result.shipment?.label"> - {{ result.shipment?.label }}</span>
                         <span *ngIf="result.field"> - {{ result.field }}</span>
@@ -298,14 +298,14 @@
                     type="button"
                     mat-button
                     class="mat-button"
-                    title="Retry geocode"
+                    title="Reintentar geocodificación"
                     (click)="retryGeocode(result, shipmentAddressInput.value)">
-                    <mat-icon class="icon--smaller m-0">refresh</mat-icon>&nbsp;&nbsp;Retry
+                    <mat-icon class="icon--smaller m-0">refresh</mat-icon>&nbsp;&nbsp;Reintentar
                   </button>
                   <button
                     type="button"
                     mat-icon-button
-                    title="Remove record from CSV"
+                    title="Eliminar registro del CSV"
                     (click)="removeShipmentRow(result.index)">
                     <mat-icon class="icon--smaller m-0">delete</mat-icon>
                   </button>
@@ -314,12 +314,12 @@
 
               <!-- vehicles -->
               <div *ngIf="geocodingErrorsVehicles?.length">
-                <h3 class="mb-1">Vehicles</h3>
+                <h3 class="mb-1">Vehículos</h3>
                 <div *ngFor="let result of geocodingErrorsVehicles" class="d-flex flex-row mb-1">
                   <div class="d-flex flex-column flex-grow-1">
                     <mat-form-field class="pb-0">
                       <mat-label>
-                        Row #{{ result.index + 2 }}
+                        Fila #{{ result.index + 2 }}
                         <!-- +2 to account for header and 1-based row numbers -->
                         <span *ngIf="result.vehicle?.label"> - {{ result.vehicle?.label }}</span>
                         <span *ngIf="result.field"> - {{ result.field }}</span>
@@ -334,14 +334,14 @@
                     type="button"
                     mat-button
                     class="mat-button"
-                    title="Retry geocode"
+                    title="Reintentar geocodificación"
                     (click)="retryGeocode(result, vehicleAddressInput.value)">
-                    <mat-icon class="icon--smaller m-0">refresh</mat-icon>&nbsp;&nbsp;Retry
+                    <mat-icon class="icon--smaller m-0">refresh</mat-icon>&nbsp;&nbsp;Reintentar
                   </button>
                   <button
                     type="button"
                     mat-icon-button
-                    title="Remove record from CSV"
+                    title="Eliminar registro del CSV"
                     (click)="removeVehicleRow(result.index)">
                     <mat-icon class="icon--smaller m-0">delete</mat-icon>
                   </button>
@@ -359,10 +359,10 @@
 </div>
 <div mat-dialog-actions>
   <div class="dialog-contorls">
-    <button mat-button matDialogClose>Close</button>
+    <button mat-button matDialogClose>Cerrar</button>
   </div>
   <div class="preview-stepper-controls">
-    <button mat-button *ngIf="displayBackButton()" (click)="back()">Back</button>
+    <button mat-button *ngIf="displayBackButton()" (click)="back()">Atrás</button>
     <button
       mat-button
       *ngIf="displayNextButton()"
@@ -375,7 +375,7 @@
 
 <ng-template #validationErrorMessages>
   <mat-error class="mat-h3"
-    >{{ validationErrors.length > 1 ? 'Errors' : 'Error' }} validating file:</mat-error
+    >{{ validationErrors.length > 1 ? 'Errores' : 'Error' }} validando archivo:</mat-error
   >
   <mat-list *ngFor="let err of validationErrors">
     <mat-list-item>
@@ -387,18 +387,18 @@
 </ng-template>
 
 <ng-template #validating>
-  <p>Parsing data and geocoding...</p>
+  <p>Analizando datos y geocodificando...</p>
   <mat-progress-bar mode="indeterminate"></mat-progress-bar>
 </ng-template>
 
 <ng-template #loading>
-  <p>Loading data...</p>
+  <p>Cargando datos...</p>
 </ng-template>
 
 <ng-template #noData>
-  <h3 class="mat-error">No data found in file.</h3>
+  <h3 class="mat-error">No se encontraron datos en el archivo.</h3>
 </ng-template>
 
 <ng-template #errorLoading>
-  <h3 class="mat-error">Error loading file.</h3>
+  <h3 class="mat-error">Error cargando archivo.</h3>
 </ng-template>

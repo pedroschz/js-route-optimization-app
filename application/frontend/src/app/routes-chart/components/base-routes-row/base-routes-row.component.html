@@ -8,7 +8,7 @@
     <div class="text__title mb-0">
       <a
         href="javascript:void(0)"
-        [title]="'View metadata for ' + (vehicle | entityName: 'Vehicle')"
+        [title]="'Ver metadatos para ' + (vehicle | entityName: 'Vehicle')"
         (click)="viewMetadata.emit(vehicle.id)">
         {{
           (vehicle | entityName: 'Vehicle').length <= maxNameLength
@@ -17,13 +17,13 @@
         }}
       </a>
     </div>
-    <div class="text__caption mb-0 text--gray">Shipments: {{ shipmentCount || 0 }}</div>
+    <div class="text__caption mb-0 text--gray">Envíos: {{ shipmentCount || 0 }}</div>
   </div>
   <button
     class="edit-button"
     mat-icon-button
     type="button"
-    title="Edit vehicle"
+    title="Editar vehículo"
     (click)="editVehicle.emit(vehicle.id)">
     <mat-icon>create</mat-icon>
   </button>

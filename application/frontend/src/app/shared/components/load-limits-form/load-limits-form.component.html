@@ -1,23 +1,23 @@
 <div *ngFor="let group of control?.controls; index as i" class="mat-typography" [formGroup]="group">
-  <header [ngClass]="{ 'header-top-margin': i > 0 }">Load limit</header>
+  <header [ngClass]="{ 'header-top-margin': i > 0 }">Límite de carga</header>
   <div class="contents">
     <!-- Form controls -->
     <div>
       <mat-form-field class="pad-right">
-        <mat-label>Type</mat-label>
+        <mat-label>Tipo</mat-label>
         <input
           matInput
           formControlName="type"
           [matAutocomplete]="typeAuto"
           type="text"
-          placeholder="Ex. weight"
+          placeholder="Ej. peso"
           autocomplete="new-password"
           (focus)="setAutocompleteFocus(i)"
           (input)="checkLoadLimitUsage(i)" />
         <mat-error
           *ngIf="group.getError('required', 'type')"
           [attr.title]="typeErrorMessage.innerText">
-          <span #typeErrorMessage>Required</span>
+          <span #typeErrorMessage>Requerido</span>
         </mat-error>
         <mat-autocomplete #typeAuto="matAutocomplete">
           <mat-option *ngFor="let option of filteredTypes$ | async" [value]="option">
@@ -26,114 +26,114 @@
         </mat-autocomplete>
       </mat-form-field>
       <mat-form-field class="pad-right">
-        <mat-label>Max load</mat-label>
-        <input matInput formControlName="maxLoad" type="number" placeholder="Enter amount" />
+        <mat-label>Carga máxima</mat-label>
+        <input matInput formControlName="maxLoad" type="number" placeholder="Ingresar cantidad" />
         <mat-error *ngIf="group.get('maxLoad').errors" [attr.title]="maxLoadErrorMessage.innerText">
           <span #maxLoadErrorMessage>{{
-            group.getError('required', 'maxLoad') ? 'Required' : 'Non-negative integer required'
+            group.getError('required', 'maxLoad') ? 'Requerido' : 'Se requiere entero no negativo'
           }}</span>
         </mat-error>
       </mat-form-field>
       <mat-form-field class="pad-right">
-        <mat-label>Soft max load</mat-label>
+        <mat-label>Carga máxima suave</mat-label>
         <input
           matInput
           formControlName="softMaxLoad"
           type="number"
-          placeholder="Enter amount"
+          placeholder="Ingresar cantidad"
           min="0"
           [errorStateMatcher]="softMaxErrorStateMatcher" />
         <mat-error
           *ngIf="group.get('softMaxLoad').errors"
           [attr.title]="softMaxValueErrorMessage.innerText">
-          <span #softMaxValueErrorMessage>Cannot be negative</span>
+          <span #softMaxValueErrorMessage>No puede ser negativo</span>
         </mat-error>
         <mat-error
           *ngIf="group.errors?.softMaxLessThanMax"
           [attr.title]="softMaxErrorMessage.innerText">
-          <span #softMaxErrorMessage>Soft max must be less than max load</span>
+          <span #softMaxErrorMessage>El máximo suave debe ser menor que la carga máxima</span>
         </mat-error>
       </mat-form-field>
       <mat-form-field class="pad-right">
-        <mat-label>Cost per unit above soft max load</mat-label>
+        <mat-label>Costo por unidad por encima de la carga máxima suave</mat-label>
         <input
           matInput
           formControlName="costPerUnitAboveSoftMax"
           type="number"
-          placeholder="Enter amount"
+          placeholder="Ingresar cantidad"
           min="0" />
         <mat-error
           *ngIf="group.get('costPerUnitAboveSoftMax').errors"
           [attr.title]="softMaxErrorMessage.innerText">
-          <span #softMaxErrorMessage>Cannot have a negative cost</span>
+          <span #softMaxErrorMessage>No puede tener un costo negativo</span>
         </mat-error>
       </mat-form-field>
       <mat-form-field class="pad-right">
-        <mat-label>Start load interval min</mat-label>
+        <mat-label>Mínimo del intervalo de carga inicial</mat-label>
         <input
           matInput
           formControlName="startLoadIntervalMin"
           type="number"
-          placeholder="Enter amount"
+          placeholder="Ingresar cantidad"
           min="0"
           [errorStateMatcher]="startLoadErrorStateMatcher" />
         <mat-error
           *ngIf="group.get('startLoadIntervalMin').errors"
           [attr.title]="startLoadIntervalMinErrorMessage.innerText">
-          <span #startLoadIntervalMinErrorMessage>Cannot be negative</span>
+          <span #startLoadIntervalMinErrorMessage>No puede ser negativo</span>
         </mat-error>
         <mat-error
           *ngIf="group.errors?.startMinLessThanMax"
           [attr.title]="startLoadIntervalMinMaxErrorMessage.innerText">
-          <span #startLoadIntervalMinMaxErrorMessage>Min must be less than max</span>
+          <span #startLoadIntervalMinMaxErrorMessage>El mínimo debe ser menor que el máximo</span>
         </mat-error>
       </mat-form-field>
       <mat-form-field class="pad-right">
-        <mat-label>Start load interval max</mat-label>
+        <mat-label>Máximo del intervalo de carga inicial</mat-label>
         <input
           matInput
           formControlName="startLoadIntervalMax"
           type="number"
-          placeholder="Enter amount"
+          placeholder="Ingresar cantidad"
           min="0" />
         <mat-error
           *ngIf="group.get('startLoadIntervalMax').errors"
           [attr.title]="startLoadIntervalMaxErrorMessage.innerText">
-          <span #startLoadIntervalMaxErrorMessage>Cannot be negative</span>
+          <span #startLoadIntervalMaxErrorMessage>No puede ser negativo</span>
         </mat-error>
       </mat-form-field>
       <mat-form-field class="pad-right">
-        <mat-label>End load interval min</mat-label>
+        <mat-label>Mínimo del intervalo de carga final</mat-label>
         <input
           matInput
           formControlName="endLoadIntervalMin"
           type="number"
-          placeholder="Enter amount"
+          placeholder="Ingresar cantidad"
           min="0"
           [errorStateMatcher]="endLoadErrorStateMatcher" />
         <mat-error
           *ngIf="group.get('endLoadIntervalMin').errors"
           [attr.title]="endLoadIntervalMinErrorMessage.innerText">
-          <span #endLoadIntervalMinErrorMessage>Cannot be negative</span>
+          <span #endLoadIntervalMinErrorMessage>No puede ser negativo</span>
         </mat-error>
         <mat-error
           *ngIf="group.errors?.endMinLessThanMax"
           [attr.title]="endLoadIntervalMinMaxErrorMessage.innerText">
-          <span #endLoadIntervalMinMaxErrorMessage>Min must be less than max</span>
+          <span #endLoadIntervalMinMaxErrorMessage>El mínimo debe ser menor que el máximo</span>
         </mat-error>
       </mat-form-field>
       <mat-form-field>
-        <mat-label>End load interval max</mat-label>
+        <mat-label>Máximo del intervalo de carga final</mat-label>
         <input
           matInput
           formControlName="endLoadIntervalMax"
           type="number"
-          placeholder="Enter amount"
+          placeholder="Ingresar cantidad"
           min="0" />
         <mat-error
           *ngIf="group.get('endLoadIntervalMax').errors"
           [attr.title]="endLoadIntervalMaxErrorMessage.innerText">
-          <span #endLoadIntervalMaxErrorMessage>Cannot be negative</span>
+          <span #endLoadIntervalMaxErrorMessage>No puede ser negativo</span>
         </mat-error>
       </mat-form-field>
     </div>
@@ -144,13 +144,13 @@
         class="clear-place"
         (click)="removeLoadLimit(i)"
         mat-icon-button
-        title="Remove capacity"
+        title="Eliminar capacidad"
         [disabled]="disabled">
         <mat-icon class="icon--smaller m-0" svgIcon="delete"></mat-icon>
       </button>
     </div>
   </div>
   <p class="unused-load-limit-warning" *ngIf="unusedLoadLimits[i]">
-    This demand type and/or unit does not exist on any vehicles.
+    Este tipo de demanda y/o unidad no existe en ningún vehículo.
   </p>
 </div>

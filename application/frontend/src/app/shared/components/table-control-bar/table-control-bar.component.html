@@ -2,7 +2,7 @@
 <ng-content select="[preUndoRedo]"></ng-content>
 <app-undo-redo></app-undo-redo>
 <button *ngIf="showModelSettings" mat-button (click)="openShipmentModelSettings.emit()">
-  <mat-icon svgIcon="settings" class="mr-2"></mat-icon>Shipment model settings
+  <mat-icon svgIcon="settings" class="mr-2"></mat-icon>Configuración del modelo de envío
 </button>
 <ng-content select="[postUndoRedo]"></ng-content>
 <ng-content select="[endContent]"></ng-content>
@@ -11,7 +11,7 @@
   mat-button
   *ngIf="displayColumns?.length > 0"
   [matMenuTriggerFor]="menu"
-  aria-label="Display columns menu"
+  aria-label="Menú de columnas de visualización"
   @.disabled>
   <mat-icon svgIcon="toc_rtl"></mat-icon>
   <mat-menu #menu="matMenu" class="display-columns-menu">

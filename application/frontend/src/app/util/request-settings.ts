@@ -17,13 +17,13 @@ limitations under the License.
 import { SearchMode } from 'src/app/core/models/dispatcher.model';
 
 export const SEARCH_MODE_LABELS = {
-  [SearchMode.RETURN_FAST]: 'Return first good solution',
-  [SearchMode.CONSUME_ALL_AVAILABLE_TIME]: 'Search for better solutions up to time limit',
+  [SearchMode.RETURN_FAST]: 'Devolver primera solución buena',
+  [SearchMode.CONSUME_ALL_AVAILABLE_TIME]: 'Buscar mejores soluciones hasta el límite de tiempo',
 };
 
 export enum RelaxationLevelNames {
-  RELAXATION_LEVEL_UNSPECIFIED = 'No relaxation',
-  RELAX_VISIT_TIMES_AFTER_THRESHOLD = 'Relax visit time',
-  RELAX_VISIT_TIMES_AND_SEQUENCE_AFTER_THRESHOLD = 'Relax visit time and sequences',
-  RELAX_ALL_AFTER_THRESHOLD = 'Relax all',
+  RELAXATION_LEVEL_UNSPECIFIED = 'Sin relajación',
+  RELAX_VISIT_TIMES_AFTER_THRESHOLD = 'Relajar tiempo de visita',
+  RELAX_VISIT_TIMES_AND_SEQUENCE_AFTER_THRESHOLD = 'Relajar tiempo de visita y secuencias',
+  RELAX_ALL_AFTER_THRESHOLD = 'Relajar todo',
 }

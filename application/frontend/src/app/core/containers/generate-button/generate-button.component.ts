@@ -28,7 +28,7 @@ import { ValidationService } from '../../services';
 })
 export class GenerateButtonComponent {
   @Input() disabled = false;
-  @Input() label = 'Generate';
+  @Input() label = 'Generar';
   @Input() prompt = false;
   @Input() solving = false;
 

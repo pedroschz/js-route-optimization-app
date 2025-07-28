@@ -156,7 +156,7 @@
               </mat-form-field>
               <mat-error
                 *ngIf="shipmentTypeReq.getError('required', 'requiredShipmentTypeAlternatives')">
-                Required
+                Requerido
               </mat-error>
             </div>
           </div>
@@ -164,14 +164,14 @@
           <div
             class="unused-shipment-type-warning"
             *ngIf="unusedShipmentReqTypes[shipmentTypeReqsIndex]">
-            Shipment type(s) not used on any shipments:
+            Tipo(s) de envío no utilizados en ningún envío:
             {{ unusedShipmentReqTypes[shipmentTypeReqsIndex] }}
           </div>
         </div>
 
         <!-- requirement mode -->
         <div class="settings-item pad-right">
-          <div class="mat-body-strong">Requirement mode*</div>
+          <div class="mat-body-strong">Modo de requisito*</div>
           <mat-form-field appearance="outline" class="pb-0">
             <mat-select formControlName="requirementMode" #requirementMode>
               <mat-option
@@ -182,7 +182,7 @@
             </mat-select>
           </mat-form-field>
           <mat-error *ngIf="shipmentTypeReq.getError('required', 'requirementMode')">
-            Required
+            Requerido
           </mat-error>
         </div>
 
@@ -192,7 +192,7 @@
           class="clear-place"
           (click)="removeShipmentTypeRequirements(shipmentTypeReqsIndex)"
           mat-icon-button
-          title="Remove Shipment Type Requirement">
+          title="Eliminar requisito de tipo de envío">
           <mat-icon class="icon--smaller m-0" svgIcon="delete"></mat-icon>
         </button>
       </div>
@@ -203,7 +203,7 @@
       class="light-stroked-button"
       color="primary"
       (click)="addShipmentTypeRequirements()">
-      Add shipment type requirement
+      Agregar requisito de tipo de envío
     </button>
   </section>
 </form>

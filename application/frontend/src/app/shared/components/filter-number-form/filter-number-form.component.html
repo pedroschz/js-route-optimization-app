@@ -11,16 +11,16 @@
       <mat-label>{{ valueLabel }}</mat-label>
       <input matInput type="number" [formControl]="control" required />
       <mat-error *ngIf="control.errors?.required && (control.touched || control.dirty)">
-        {{ valueLabel }} is required
+        {{ valueLabel }} es requerido
       </mat-error>
     </mat-form-field>
     <ng-container *ngIf="operationCtrl.value === NumberFilterOperation.Between">
-      <span>and</span>
+      <span>y</span>
       <mat-form-field *ngIf="value2Ctrl as control">
-        <mat-label>Max Value</mat-label>
+        <mat-label>Valor máximo</mat-label>
         <input matInput type="number" [formControl]="control" required />
         <mat-error *ngIf="control.errors?.required && (control.touched || control.dirty)">
-          Max Value is required
+          El valor máximo es requerido
         </mat-error>
       </mat-form-field>
     </ng-container>
