@@ -1,3 +1,80 @@
 {
-  "temp": "This is a placeholder..."
+  "backendApi": {
+    "apiRoot": "http://localhost:8080/api"
+  },
+  "unitAbbreviations": {
+    "grams": "g",
+    "kilograms": "kg",
+    "liters": "L"
+  },
+  "storageApi": {
+    "apiRoot": "http://localhost:8080/api",
+    "allowUserStorage": false
+  },
+  "messages": {
+    "grpcStatusCodes": {
+      "UNAVAILABLE": "Cloud Fleet Routing is not available at the moment. Please try again later (gRPC error 14).",
+      "ABORTED": "Your request was aborted (gRPC error 10).",
+      "ALREADY_EXISTS": "Your client attempted to create something that already exists (gRPC error 6).",
+      "CANCELLED": "The Cloud Fleet Routing request was cancelled (gRPC error 1).",
+      "DATA_LOSS": "Some data was lost or corrupted (gRPC error 15).",
+      "DEADLINE_EXCEEDED": "Cloud Fleet Routing didn't come up with a solution. Try increasing the solve time.",
+      "FAILED_PRECONDITION": "Some precondition wasn't met, and Cloud Fleet Routing can't continue (gRPC error 9).",
+      "INTERNAL": "Internal gRPC error.",
+      "INVALID_ARGUMENT": "Invalid request.<br/>Please refer to the <a href='https://cloud.google.com/optimization/docs/reference' target='_blank'>Cloud Fleet Routing documentation</a>.",
+      "NOT_FOUND": "Some requested entity couldn't be found (gRPC error 5).",
+      "OUT_OF_RANGE": "Some operation was attempted outside a valid range (gRPC error 11).",
+      "PERMISSION_DENIED": "Your client doesn't have permission to use Cloud Fleet Routing. See the <a href='https://cloud.google.com/optimization/docs/introduction/setup' target='_blank'>Cloud Fleet Routing setup instructions</a>.",
+      "RESOURCE_EXHAUSTED": "Some resource has been exhausted (gRPC error 8).",
+      "UNAUTHENTICATED": "The request doesn't have valid authentication credentials. See the <a href='https://cloud.google.com/optimization/docs/introduction/setup' target='_blank'>Cloud Fleet Routing setup instructions</a>.",
+      "UNIMPLEMENTED": "Some operation is unimplemented (gRPC error 12).",
+      "UNKNOWN": "Unknown gRPC problem (gRPC error 2)."
+    },
+    "unrecognizedError": "Unrecognized error",
+    "unrecognizedErrorCode": "Unrecognized error code",
+    "allShipmentsSkippedWarning": "All shipments skipped",
+    "trafficInfeasibilitiesInfo": "One or more traffic infeasibilities found",
+    "formFileRequired": "File is required",
+    "formInvalidFileFormat": "Invalid file format",
+    "formInvalidRequestFormat": "Invalid request format"
+  },
+  "map": {
+    "apiKey": "",
+    "apiRoot": "https://maps.googleapis.com/maps/api/js",
+    "symbols": {
+      "depot": {
+        "url": "./assets/images/depot.svg",
+        "scaledSize": {
+          "width": 35,
+          "height": 35
+        },
+        "anchor": {
+          "x": 17.5,
+          "y": 17.5
+        }
+      }
+    },
+    "options": {
+      "zoom": 12,
+      "maxZoom": 18,
+      "center": {
+        "lat": 48.8566,
+        "lng": 2.3522
+      },
+      "disableDefaultUI": true,
+      "zoomControl": true,
+      "gestureHandling": "auto",
+      "clickableIcons": false,
+      "styles": [
+        {
+          "elementType": "labels.icon",
+          "stylers": [
+            {
+              "visibility": "off"
+            }
+          ]
+        }
+      ]
+    }
+  }
 }

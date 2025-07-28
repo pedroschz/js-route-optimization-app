@@ -17,12 +17,10 @@ limitations under the License.
 import { Injectable } from '@angular/core';
 import { MatLegacyDialog as MatDialog } from '@angular/material/legacy-dialog';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { exhaustMap, first, map } from 'rxjs/operators';
-import { newScenario } from 'src/app/welcome/actions/welcome-page.actions';
+import { exhaustMap } from 'rxjs/operators';
 import { editAllGlobalRelaxationConstraints } from '../actions/request-settings.actions';
 import { EditGlobalRelaxationConstraintsDialogComponent } from '../containers';
 import { Modal } from '../models';
-import { setShipmentModel } from '../actions/shipment-model.actions';
 
 @Injectable()
 export class RequestSettingsEffects {
@@ -43,20 +41,6 @@ export class RequestSettingsEffects {
     { dispatch: false }
   );
 
-  initializeRequestSettings$ = createEffect(() =>
-    this.actions$.pipe(
-      ofType(newScenario),
-      first(),
-      map(() => {
-        const now = new Date();
-        now.setHours(0, 0, 0, 0);
-        const globalStartTime = now.getTime() / 1000;
-        now.setHours(24);
-        const globalEndTime = now.getTime() / 1000;
-        return setShipmentModel({ globalStartTime, globalEndTime });
-      })
-    )
-  );
 
   constructor(private actions$: Actions, private dialog: MatDialog) {}
 }

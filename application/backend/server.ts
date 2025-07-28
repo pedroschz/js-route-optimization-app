@@ -14,6 +14,12 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
+import dotenv from "dotenv";
+import path from "path";
+
+// Load .env file from parent directory (application/.env)
+dotenv.config({ path: path.join(__dirname, "..", ".env") });
+
 import { app } from "./app"
 import { log } from "./logging";
 

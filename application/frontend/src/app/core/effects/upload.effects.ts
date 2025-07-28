@@ -20,7 +20,6 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Action, select, Store } from '@ngrx/store';
 import { concatMap, exhaustMap, filter, first, mergeMap, mergeMapTo } from 'rxjs/operators';
 import * as fromRoot from 'src/app/reducers';
-import { WelcomePageActions } from 'src/app/welcome/actions';
 import {
   ConfigActions,
   DispatcherActions,
@@ -77,7 +76,7 @@ export class UploadEffects {
 
   openDialog$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(UploadActions.openDialog, WelcomePageActions.openUploadDialog),
+      ofType(UploadActions.openDialog),
       mergeMapTo(this.store.pipe(select(fromUI.selectModal), first())),
       filter((modal) => modal === Modal.Upload && !this.dialog.getDialogById(Modal.Upload)),
       exhaustMap(() =>

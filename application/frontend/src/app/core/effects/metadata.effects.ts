@@ -37,7 +37,7 @@ export class UndoRedoEffects {
           filter((currentUndo) => currentUndo != null),
           map(({ undoPage }) => undoPage),
           tap((page) => {
-            const url = '/' + page !== Page.Welcome ? page : '';
+            const url = '/' + page;
             this.router.navigateByUrl(url, { skipLocationChange: true });
           }),
           map((page) => UndoRedoActions.changePage({ page }))
@@ -58,7 +58,7 @@ export class UndoRedoEffects {
           filter((currentRedo) => currentRedo != null),
           map(({ undoPage, redoPage }) => redoPage ?? undoPage),
           tap((page) => {
-            const url = '/' + page !== Page.Welcome ? page : '';
+            const url = '/' + page;
             this.router.navigateByUrl(url, { skipLocationChange: true });
           }),
           map((page) => UndoRedoActions.changePage({ page }))

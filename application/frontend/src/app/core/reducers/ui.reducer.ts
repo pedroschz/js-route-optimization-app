@@ -17,7 +17,6 @@ limitations under the License.
 import { createReducer, on } from '@ngrx/store';
 import { ShipmentsActions } from 'src/app/shipments/actions';
 import { VehiclesActions } from 'src/app/vehicles/actions';
-import { WelcomePageActions } from 'src/app/welcome/actions';
 import {
   DispatcherActions,
   DownloadActions,
@@ -54,7 +53,7 @@ export const initialState: State = {
   hasMap: true,
   modal: null,
   mouseOverId: null,
-  page: Page.Welcome,
+  page: Page.ScenarioPlanning,
   splitSizes: [50, 50],
   openUploadDialogOnClose: false,
 };
@@ -66,14 +65,13 @@ export const reducer = createReducer(
     page: state.page,
     mouseOverId: null,
   })),
-  on(WelcomePageActions.initialize, () => ({ ...initialState })),
   on(UploadActions.openCsvDialog, (state, action) => ({
     ...state,
     modal: Modal.CsvUpload,
     openUploadDialogOnClose: action.openUploadDialogOnClose,
   })),
   on(DownloadActions.downloadPDF, (state) => ({ ...state, modal: Modal.DownloadPDF })),
-  on(UploadActions.openDialog, WelcomePageActions.openUploadDialog, (state) => ({
+  on(UploadActions.openDialog, (state) => ({
     ...state,
     modal: Modal.Upload,
   })),

@@ -36,10 +36,13 @@ export interface State {
   transitionAttributes?: ITransitionAttributes[];
 }
 
+const now = Math.floor(Date.now() / 1000);
+const tomorrow = now + 86400;
+
 export const initialState: State = {
   globalDurationCostPerHour: null,
-  globalStartTime: 0,
-  globalEndTime: 0,
+  globalStartTime: now,
+  globalEndTime: tomorrow,
   maxActiveVehicles: null,
   precedenceRules: null,
   shipmentTypeIncompatibilities: null,

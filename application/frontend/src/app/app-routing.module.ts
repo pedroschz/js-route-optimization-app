@@ -27,7 +27,8 @@ import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    loadChildren: () => import('./welcome/welcome.module').then((m) => m.WelcomeModule),
+    redirectTo: '/scenarioPlanning',
+    pathMatch: 'full',
   },
   {
     path: 'vehicles',
@@ -61,7 +62,7 @@ const routes: Routes = [
   },
   {
     path: '**',
-    redirectTo: '/',
+    redirectTo: '/scenarioPlanning',
     pathMatch: 'full',
   },
 ];

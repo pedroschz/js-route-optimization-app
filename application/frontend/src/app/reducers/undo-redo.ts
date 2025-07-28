@@ -42,7 +42,7 @@ import { Frame, State as UndoRedoState } from '../core/reducers/undo-redo.reduce
 
 const maxUndos = 100;
 
-const preSolvePages = new Set([Page.Welcome, Page.Vehicles, Page.Shipments, Page.ScenarioPlanning]);
+const preSolvePages = new Set([Page.Vehicles, Page.Shipments, Page.ScenarioPlanning]);
 
 const ignoreActions = new Set<string>([
   UndoRedoActions.changePage.type,
@@ -214,7 +214,7 @@ export function undoRedo(reducer: ActionReducer<State>): ActionReducer<State> {
     if (config[action.type]) {
       return push(reducer, nextState, action);
     }
-    if (state.ui.page === Page.Welcome && state.ui.page !== nextState.ui.page) {
+    if (state.ui.page === Page.ScenarioPlanning && state.ui.page !== nextState.ui.page) {
       return reset(nextState);
     }
     return merge(nextState, action);

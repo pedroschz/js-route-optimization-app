@@ -102,9 +102,6 @@ export class BodyComponent implements OnChanges {
     });
   }
 
-  get isWelcomePage(): boolean {
-    return this.page === Page.Welcome;
-  }
   get isShipmentsPage(): boolean {
     return this.page === Page.Shipments;
   }

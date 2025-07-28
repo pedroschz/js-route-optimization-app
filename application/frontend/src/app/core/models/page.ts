@@ -20,7 +20,6 @@ limitations under the License.
  * Undo/redo uses this convention to navigate between pages.
  */
 export enum Page {
-  Welcome = 'welcome',
   Shipments = 'shipments',
   Vehicles = 'vehicles',
   RoutesChart = 'routesChart',

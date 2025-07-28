@@ -21,3 +21,8 @@ terraform.tfstate*
 
 .DS_Store
 application/frontend/src/config/*
+
+
+.env
+.env.local
+application/backend/google-credentials.json

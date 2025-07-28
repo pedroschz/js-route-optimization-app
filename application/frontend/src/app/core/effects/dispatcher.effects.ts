@@ -21,7 +21,6 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { select, Store } from '@ngrx/store';
 import { exhaustMap, filter, map, mergeMap, switchMapTo, take, tap } from 'rxjs/operators';
 import { State } from 'src/app/reducers';
-import { WelcomePageActions } from 'src/app/welcome/actions';
 import {
   DispatcherActions,
   DispatcherApiActions,
@@ -53,7 +52,7 @@ export class DispatcherEffects {
   navigateToShipments$ = createEffect(
     () =>
       this.actions$.pipe(
-        ofType(DispatcherActions.uploadScenarioSuccess, WelcomePageActions.newScenario),
+        ofType(DispatcherActions.uploadScenarioSuccess),
         tap(() => this.router.navigateByUrl('scenarioPlanning', { skipLocationChange: true }))
       ),
     { dispatch: false }

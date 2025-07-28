@@ -37,7 +37,7 @@ export const selectSplitSizes = createSelector(selectUIState, fromUI.selectSplit
 
 export const selectStarted = createSelector(
   selectPage,
-  (page) => page != null && page !== Page.Welcome
+  (page) => page != null
 );
 
 export const selectMouseOverId = createSelector(selectUIState, fromUI.selectMouseOverId);
